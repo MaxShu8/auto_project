@@ -44,6 +44,8 @@ def checking_the_choice_of_another_currency(params):
                 find_el(params, btn_currency_change_ru_in_the_cost_block.xpath)
                 click(params)
 
+                price_to_load(params)
+
                 check_text_attribute(params, displaying_the_currency_ru_in_the_cost_block.xpath, "₽")
                 check_text_attribute(params, displaying_the_total_currency_in_the_cost_block.xpath, "₽")
 

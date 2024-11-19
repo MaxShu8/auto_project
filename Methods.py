@@ -83,7 +83,7 @@ def find_el(params, xpath, *args):
         params.current_element.find_element(By.XPATH, site_object)
 
     except InvalidSelectorException as e:
-        err = f'\nСуть ошибки: указан некорректный адрес элемента\nМетод: find_element\nЭлемент: + {site_object}\n{e}'
+        err = f'\nСуть ошибки: указан некорректный адрес элемента\nМетод: find_element\nЭлемент: {site_object}\n{e}'
         raise InvalidSelectorException(send_message_tg(err, token, chat_id))
 
     except WebDriverException as e:
@@ -359,4 +359,12 @@ def upload_file(params, xpath):
     except Exception as e:
         err = f"Файл не загрузился\n{e}"
         raise Exception(err)
+
+
+def get_the_text(params, xpath):
+    a = WebDriverWait(params, element_time_out, 1).until(ec.visibility_of_element_located((By.XPATH, xpath)))
+    a.find_element(By.XPATH, xpath)
+
+    including_text = a.text  # выгружает текст
+    return including_text
 

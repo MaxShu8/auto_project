@@ -144,13 +144,91 @@ btn_delete_ka_on_the_popup_card_create_contractor = SiteObjects(
     "Кнопка 'Удалить' в карточке контрагента",
     "//button[@class='vz-button primary big']")
 
+"""Карточка контрагента"""
+
+btn_add_a_contact_on_the_card_contractor = SiteObjects(
+    "Кнопка 'Добавить контакты' в карточке контрагента",
+    "//span[contains(., 'контакты')]")
+
+btn_the_expand_contact_block_button_in_the_counterparty_card_contractor = SiteObjects(
+    "Кнопка развернуть блок контактов в карточке контрагента",
+    "//div[@class='vz-icon mdi mdi-chevron-down rounded-icon vz-collapse-header-collapsebtn vz-cursor-pointer out']")
 
 
+# Модалка "Новый контакт"
+
+inp_fio_on_the_popup_new_contact = SiteObjects(
+    "Поле 'ФИО' в попапе 'Новый контакт'",
+    "//label[contains(text(), 'ФИО')]/../div/input[contains(@class, 'vz-input-control')]")
+
+inp_phone_on_the_popup_new_contact = SiteObjects(
+    "Поле 'Телефон' в попапе 'Новый контакт'",
+    "//label[contains(text(), 'Телефон')]/../div/input[contains(@class, 'vz-input-control')]")
+
+inp_email_on_the_popup_new_contact = SiteObjects(
+    "Поле 'Email' в попапе 'Новый контакт'",
+    "//label[contains(text(), 'Email')]/../div/input[contains(@class, 'vz-input-control')]")
+
+btn_add_a_contact_on_the_popup_card_contractor = SiteObjects(
+    "Кнопка 'Добавить контакты' в карточке контрагента",
+    "//div[@class='vz-dialog-card-buttons']/..//span[contains(., 'Добавить')]")
+
+text_error_incorrect_phone_format_on_the_popup_new_contractor = SiteObjects(
+    "Текст ошибки если некорректно ввести номер телефона",
+    "//div[@class='vz-invalid-message error' and contains(., 'Неверный формат телефона')]")
+
+text_error_error_invalid_email_address_format_on_the_popup_new_contractor = SiteObjects(
+    "Текст ошибки если некорректно ввести электронную почту",
+    "//div[@class='vz-invalid-message error' and contains(., 'Неверный формат email адреса')]")
+
+# Блок "Контакты" у КА
+
+text_fio_contact_on_the_card_contractor = SiteObjects(
+    "ФИО в карточке контакта",
+    "//p/span[text()='ФИО']/../span[2]")
+
+text_phone_contact_on_the_card_contractor = SiteObjects(
+    "Телефон в карточке контакта",
+    "//p/span[text()='Телефон']/../span[2]")
+
+text_email_contact_on_the_card_contractor = SiteObjects(
+    "Email в карточке контакта",
+    "//p/span[text()='Email']/../span[2]")
+
+btn_editing_contact_on_the_card_contractor = SiteObjects(
+    "Кнопка Редактировать в карточке контакта",
+    "//div[@class='vz-icon mdi mdi-pencil rounded-icon vz-cursor-pointer']")
+
+input_fio_contact_on_the_card_contractor = SiteObjects(
+    "Поле ФИО в карточке контактов",
+    "//label[contains(text(), 'ФИО')]/..//input[@class='vz-input-control']")
+
+btn_cancel_editing_contact_on_the_card_contractor = SiteObjects(
+    "Кнопка Отмена редактирования в карточке контакта",
+    "//div[@class='vz-icon mdi mdi-close rounded-icon mr-10 vz-cursor-pointer']")
+
+btn_confirm_editing_contact_on_the_card_contractor = SiteObjects(
+    "Кнопка подтверждения редактирования в карточке контакта",
+    "//div[contains(@class, 'vz-icon mdi mdi-check rounded-icon')]")
+
+btn_delete_contact_on_the_card_contractor = SiteObjects(
+    "Кнопка подтверждения редактирования в карточке контакта",
+    "//span[contains(., 'Контакт №')]/../..//div[contains(@class, 'vz-icon mdi mdi-delete')]")
+
+text_the_contact_counter_in_the_contacts_with_counterparties_block = SiteObjects(
+    "Счетчик в карточке контакта",
+    "//span[contains(text(), 'Контакты')]")
 
 
+# Модалка "Удаление контакта"
 
+btn_delete_contact_on_the_popup_deleting_contact_on_card_contractor = SiteObjects(
+    "Кнопка подтверждения удаления контакта в попапе Удаление контакта",
+    "//div[contains(@class, 'vz-dialog-card-buttons')]//span[contains(., 'Подтвердить')]")
 
-
+btn_cancel_delete_contact_on_the_popup_deleting_contact_on_card_contractor = SiteObjects(
+    "Кнопка отмены подтверждения удаления контакта в попапе Удаление контакта",
+    "//div[contains(@class, 'vz-dialog-card-buttons')]//span[contains(., 'Отмена')]")
 
 
 

@@ -7,10 +7,6 @@ btn_add_on_the_contractors_main_page = SiteObjects(
     "Кнопка 'Добавить' на странице 'Контрагенты'",
     "//span[contains(text(), 'Добавить')]")
 
-# data_exist_ka_in_the_list_contractor_page = SiteObjects(
-#     "Карточка КА в списке на странице контрагент",
-#     f"//span[@title='{}']")
-
 list_of_ka_on_the_contractor_page = SiteObjects(
     "Список КА на странице контрагентов",
     "//div[@class='vz-contractors-list']")
@@ -30,6 +26,10 @@ btn_tab_legal_entities_on_the_contractor_page = SiteObjects(
 inp_search_ka_on_the_contractor_page = SiteObjects(
     "Поле 'Поиск' на странице 'Контрагенты'",
     "//input[@class='vz-input-control iconical']")
+
+btn_add_claim_on_the_contractors_main_page = SiteObjects(
+    "Кнопка 'Добавить' на странице 'Контрагенты'",
+    "//span[contains(., 'Добавить')]")
 
 
 # Попап "Новый контрагент"
@@ -130,7 +130,7 @@ text_error_invalid_kpp_number_on_the_popup_new_contractor = SiteObjects(
     "//div[text()='Неверно введен КПП']")
 
 
-# Карточка созданного КА
+"""Карточка контрагента"""
 
 text_name_ka_on_the_card_create_contractor = SiteObjects(
     "Наименование КА в карточке контрагента",
@@ -144,8 +144,6 @@ btn_delete_ka_on_the_popup_card_create_contractor = SiteObjects(
     "Кнопка 'Удалить' в карточке контрагента",
     "//button[@class='vz-button primary big']")
 
-"""Карточка контрагента"""
-
 btn_add_a_contact_on_the_card_contractor = SiteObjects(
     "Кнопка 'Добавить контакты' в карточке контрагента",
     "//span[contains(., 'контакты')]")
@@ -153,6 +151,10 @@ btn_add_a_contact_on_the_card_contractor = SiteObjects(
 btn_the_expand_contact_block_button_in_the_counterparty_card_contractor = SiteObjects(
     "Кнопка развернуть блок контактов в карточке контрагента",
     "//div[@class='vz-icon mdi mdi-chevron-down rounded-icon vz-collapse-header-collapsebtn vz-cursor-pointer out']")
+
+btn_hide_payer_button_card_contractor = SiteObjects(
+    "Кнопка 'Скрыть плательщика' в карточке контрагента",
+    "//div[contains(@class, 'vz-toggler-button')]")
 
 
 # Модалка "Новый контакт"
@@ -231,6 +233,21 @@ btn_cancel_delete_contact_on_the_popup_deleting_contact_on_card_contractor = Sit
     "//div[contains(@class, 'vz-dialog-card-buttons')]//span[contains(., 'Отмена')]")
 
 
+"""Различные уведомления"""
+text_notification_the_claim_has_been_registered = SiteObjects(
+    "Уведомление о том, что претензия зарегистрирована",
+    "//div[contains(@class, 'vz-toast-wrapper-content')]/span[contains(., 'претензия зарегистрирована')]")
 
+"""Претензии"""
+btn_show_collapse_counterparty_claims_on_card_contractor = SiteObjects(
+    "Кнопка показать/свернуть претензии у контрагента",
+    "//div[contains(@class, 'vz-icon mdi mdi-chevron-down rounded-icon vz-collapse-header-collapsebtn vz-cursor-pointer out')]")
 
+text_the_claim_number_in_the_created_claim = SiteObjects(
+    "Номер претензии в созданной претензии",
+    "//div[@class='vz-contact-panel-header-title']")
+
+text_the_order_number_in_the_created_claim = SiteObjects(
+    "Номер заказа в созданной претензии",
+    "//span[text()='Номер заказа']/../span[2]")
 

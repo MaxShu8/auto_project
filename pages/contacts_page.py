@@ -107,6 +107,3 @@ btn_close_error_popup_feedback = SiteObjects(
     "Кнопка 'Закрыть' в попапе 'Запрос оригиналов документов'",
     "//div[@class='vz-toast-close']/span[@class='mdi mdi-close']")
 
-
-
-

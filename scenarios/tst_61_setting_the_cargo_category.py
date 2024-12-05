@@ -16,8 +16,8 @@ def checking_the_category_selection(params):
 
             try:
                 """Переходим на страницу расчета заказа"""
-                set_page(params, url_base_dev_order_create_public)
-                wait_page(params, url_base_dev_order_create_public)
+                set_page(params, url_base_org_order_create_public)
+                wait_page(params, url_base_org_order_create_public)
 
                 find_el(params, txt_order_in_calculation_and_ordering_page.xpath)
 

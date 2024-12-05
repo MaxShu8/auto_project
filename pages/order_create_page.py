@@ -11,6 +11,10 @@ txt_order_in_calculation_and_ordering_page = SiteObjects(
     "Текст 'Заказ' на странице 'Расчет и оформление заказа'",
     "//span[text()='Заказ']")
 
+skeleton_after_push_the_btn_create_order = SiteObjects(
+    "Скелетон в номере заказа после создания заказа",
+    "//div[@class='w-20 mr-auto']/div[contains(@class, 'vz-skeleton vz-skeleton-animated')]")
+
 
 #  Категория груза
 
@@ -73,4 +77,18 @@ btn_currency_change_ru_in_the_cost_block = SiteObjects(
     "Выбор валюты 'российский рубль' в блоке 'Стоимость' в 'Итого'",
     "(//div['vz-select-dropdown-list-item']//img[@class='vz-icon-masked' and @src='/svg/vz-russia-flag.svg'])[3]")
 
+txt_the_payer_is_on_the_order_details_page = SiteObjects(
+    "Текст 'Плательщиком является' на странице детализации заказа",
+    "//span[contains(text(), 'Плательщиком заказа является')]")
+
+txt_the_text_of_total_in_the_block_the_cost_in_the_order_details = SiteObjects(
+    "Текст 'Всего' в блоке 'Стоимость' в детализации заказа",
+    "//div[contains(text(), 'Всего')]")
+
+
+# Блок Плательщик
+
+btn_the_sender_button_in_the_payer_block = SiteObjects(
+    "Кнопка 'Отправитель' в блоке 'Плательщик'",
+    "//div[contains(@class, 'vz-switcher-item')]/span[contains(text(), 'Отправитель')]")
 

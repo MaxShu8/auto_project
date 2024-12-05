@@ -6,6 +6,7 @@ from various_data import *
 url_base_dev = "https://vozovoz.dev/"
 url_base_dev_LK = "https://vozovoz.dev/personal/orders/onward/"
 url_base_dev_order_create = "https://vozovoz.dev/personal/order/create/"
+url_base_dev_personal_order = "https://vozovoz.dev/personal/order/"
 url_base_dev_order_create_public = "https://vozovoz.dev/order/create/"
 url_documents_dev = "https://vozovoz.dev/documents/"
 url_contacts_dev = "https://vozovoz.dev/contacts/"
@@ -13,7 +14,7 @@ url_contractors_dev = "https://vozovoz.dev/personal/contractors/"
 
 
 url_base_org = "https://vozovoz.org/"
-url_base_org_LK = "https://vozovoz.org/personal/orders"
+url_base_org_LK = "https://vozovoz.org/personal/orders/onward/"
 url_base_org_order_create = "https://vozovoz.org/personal/order/create/"
 url_base_org_order_create_public = "https://vozovoz.org/order/create/"
 url_base_org_personal_order = "https://vozovoz.org/personal/order/"
@@ -692,9 +693,9 @@ price_in_block_price = SiteObjects("Город указанный в поле",
 
 """ Детализация заказа"""
 
-text_number_order_after_create = SiteObjects("Номер заказа в детализации заказа",
-                                             "//span[contains(text(), 'Заказ №')]")
-
+text_number_order_after_create = SiteObjects(
+    "Номер заказа в детализации заказа",
+    "//span[contains(text(), 'Заказ №')]")
 
 
 """ Участники перевозки (Физ.лицо)"""

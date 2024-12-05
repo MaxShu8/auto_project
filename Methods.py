@@ -82,17 +82,17 @@ def find_el(params, xpath, *args):
         params.current_element = WebDriverWait(params, element_time_out, 1).until(ec.visibility_of_element_located((By.XPATH, xpath)))
         params.current_element.find_element(By.XPATH, site_object)
 
-    except InvalidSelectorException as e:
-        err = f'\nСуть ошибки: указан некорректный адрес элемента\nМетод: find_element\nЭлемент: {site_object}\n{e}'
-        raise InvalidSelectorException(send_message_tg(err, token, chat_id))
-
-    except WebDriverException as e:
-        err = f'\nОшибка: WebDriverException\nМетод: find_element\nЭлемент: {site_object}\n{e}'
-        raise WebDriverException(send_message_tg(err, token, chat_id))
+    # except InvalidSelectorException as e:
+    #     err = f'\nСуть ошибки: указан некорректный адрес элемента\nМетод: find_element\nЭлемент: {site_object}\n{e}'
+    #     raise InvalidSelectorException(send_message_tg(err, token, chat_id))
+    #
+    # except WebDriverException as e:
+    #     err = f'\nОшибка: WebDriverException\nМетод: find_element\nЭлемент: {site_object}\n{e}'
+    #     raise WebDriverException(send_message_tg(err, token, chat_id))
 
     except Exception as e:
         err = f'\nОшибка: неопознанная\nМетод: find_element\nЭлемент: {site_object}\n{e}'
-        raise Exception(send_message_tg(err, token, chat_id))
+        raise Exception(err)
 
     return params.current_element, site_object
 
@@ -173,6 +173,12 @@ def price_to_load(params):
             WebDriverWait(params, time_out).until(ec.visibility_of_element_located((By.XPATH, "//label[contains(text(), 'Откуда')]/ancestor::div[@class='vz-input']/div")))
             WebDriverWait(params, time_out).until(ec.text_to_be_present_in_element_attribute(('xpath', "//div[@class='vz-loader']"), attribute_='style', text_='display: none;'))
             WebDriverWait(params, time_out).until(ec.visibility_of_element_located((By.XPATH, "//div[@class='vz-calculator-price-cost']")))
+
+            # проверим, есть ли ошибка после исчезновения лоадера
+            check_error_toast(params)
+
+        elif url_base_dev in params.current_url or url_base_org in params.current_url or url_base_ru in params.current_url:
+            WebDriverWait(params, time_out).until(ec.text_to_be_present_in_element_attribute(('xpath', "//div[@class='vz-loader']"), attribute_='style', text_='display: none;'))
 
             # проверим, есть ли ошибка после исчезновения лоадера
             check_error_toast(params)
@@ -282,7 +288,7 @@ def find_number_order(params):
         send_message_tg(err_short, token, group_id_predprod)
 
 
-def check_text_attribute(params, xpath, value):
+def check_text_attribute(params, xpath, value, pass_exception=False):
     try:
         a = WebDriverWait(params, element_time_out, 1).until(ec.visibility_of_element_located((By.XPATH, xpath)))
         a.find_element(By.XPATH, xpath)
@@ -312,11 +318,15 @@ def check_text_attribute(params, xpath, value):
         elif value in including_text:
             pass
         else:
-            raise Exception
+            if pass_exception is True:
+                return False
+            else:
+                raise Exception
 
-    except Exception as e:
-        err = f"Тело атрибута не соответствует ожидаемому\n{e}"
-        raise Exception(send_message_tg(err, token, chat_id))
+    except Exception:
+        err = f"Значение атрибута: {value} - не соответствует ожидаемому"
+        raise Exception(err)
+
 
 def check_error_toast(params):
     time.sleep(0.5)
@@ -349,6 +359,15 @@ def enable_loader(params, timeout=30):
         pass
 
 
+def enable_skeleton(params, timeout=30):
+    try:
+        if url_base_org_personal_order in params.current_url or url_base_dev_personal_order in params.current_url:
+            WebDriverWait(params, timeout).until(ec.invisibility_of_element(("xpath", "//div[@class='w-20 mr-auto']/div[contains(@class, 'vz-skeleton vz-skeleton-animated')]")))
+
+    except Exception:
+        pass
+
+
 # Загрузка файла
 def upload_file(params, xpath):
 
@@ -367,4 +386,43 @@ def get_the_text(params, xpath):
 
     including_text = a.text  # выгружает текст
     return including_text
+
+
+def extract_numbers(string_value):
+    """Функция возвращает числа из строкового значения."""
+    current_number = ""
+    counter = 0
+
+    for char in string_value:
+        if char.isdigit() and counter < 10:
+            current_number += char
+            counter += 1
+
+    return current_number
+
+
+def waiting_for_the_order_to_be_visible_to_the_user(params, number):
+    """Ожидание появления заказа у другого КА."""
+
+    page_content = params.page_source
+    order = number
+    counter = 0
+
+    while order not in page_content:
+        params.refresh()
+        time.sleep(8)
+        page_content = params.page_source
+        counter += 1
+        if counter > 8:
+            break
+
+def enable_element(params, xpath, timeout=30):
+    try:
+        WebDriverWait(params, timeout).until(ec.invisibility_of_element(("xpath", xpath)))
+
+    except Exception:
+        pass
+
+
+
 

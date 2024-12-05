@@ -16,8 +16,8 @@ def checking_the_choice_of_another_currency(params):
 
             try:
                 """Переходим на страницу расчета заказа"""
-                set_page(params, url_base_dev_order_create_public)
-                wait_page(params, url_base_dev_order_create_public)
+                set_page(params, url_base_org_order_create_public)
+                wait_page(params, url_base_org_order_create_public)
 
                 find_el(params, txt_order_in_calculation_and_ordering_page.xpath)
 
@@ -28,6 +28,7 @@ def checking_the_choice_of_another_currency(params):
                 set_dispatch_city(params, city_by)
 
                 price_to_load(params)
+                time.sleep(5)
 
                 # Проверка, что установилась "бел. руб." в услугах в блоке "Стоимость"
                 find_el(params, displaying_the_currency_bel_ru_in_the_cost_block.xpath)  # Проверяем есть ли элемент с тенге
@@ -45,6 +46,7 @@ def checking_the_choice_of_another_currency(params):
                 click(params)
 
                 price_to_load(params)
+                time.sleep(5)
 
                 check_text_attribute(params, displaying_the_currency_ru_in_the_cost_block.xpath, "₽")
                 check_text_attribute(params, displaying_the_total_currency_in_the_cost_block.xpath, "₽")
@@ -58,9 +60,9 @@ def checking_the_choice_of_another_currency(params):
                 status_and_name_tst[desc] = status
                 return status_and_name_tst
 
-            except Exception:
+            except Exception as e:
                 # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
+                send_photo_tg(params, token, chat_id, desc=f"{description}\n{e}")
 
                 # Отправляем статус о не успешности прогона теста
                 status, desc = tst_passed(False, description)

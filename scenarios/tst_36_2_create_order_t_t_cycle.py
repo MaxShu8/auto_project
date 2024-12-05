@@ -6,7 +6,7 @@ def create_order_t_t_cycle(params):
     description = ''
 
     try:
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
 
         for i in range(1, int(len(cities))*200):
 
@@ -55,8 +55,8 @@ def create_order_t_t_cycle(params):
             price_to_load(params)
 
             """Заполняем участников"""
-            set_counteragent_data(params, 'sender', 'individual')
-            set_counteragent_data(params, 'recipient', 'individual')
+            set_counteragent_data(params, 'sender', 'individual', individual_fio, individual_phone)
+            set_counteragent_data(params, 'recipient', 'individual', individual_fio, individual_phone)
 
             """Нажимаем на кнопку 'Оформить'"""
             find_el(params, btn_create_order.xpath)

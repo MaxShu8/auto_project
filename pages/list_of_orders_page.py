@@ -28,9 +28,14 @@ link_if_entering_an_invalid_number_of_order_on_orders_page = SiteObjects(
     "Текст при попытке ввода не того заказа в поле 'Номер заказа' на странице 'Заказы'",
     "//span[contains(text(), 'Вы пытаетесь найти заказ')]/a")
 
+skeleton_of_order_on_orders_page = SiteObjects(
+    "Скелетон на заказах на странице 'Заказы'",
+    "//div[@class='vz-orders-skeleton']")
 
-
-
+# Вкладки (Все В пути и т.д.)
+tab_unpaid_in_the_list_of_orders_on_orders_page = SiteObjects(
+    "Вкладка 'Неоплаченные' в списке заказов",
+    "//div[contains(@class, 'vz-tabs-list-tab')]/span[contains(., 'Неоплаченные')]")
 
 
 

@@ -8,7 +8,7 @@ def create_order_terminal_address(params):
     dispatch_city, destination_city = choice_cities(cities)
 
     try:
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
 
         """Переходим на страницу оформления заказа"""
         find_el(params, btn_new_order.xpath)

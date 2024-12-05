@@ -10,7 +10,7 @@ def checking_input_search_number_order(params):
 
     try:
         """Авторизовываемся и переходим на страницу контрагентов"""
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
         wait_page(params, url_base_org_LK)
 
         """1. Поиск существующего номера заказа - цифры"""

@@ -5,10 +5,10 @@ def check_data_transfer_from_mini_calculator(params):
     main_description = 'Тест №15 - Проверка переноса данных c мини-калькулятора'
     status_and_name_tst = {}
 
-    #  Берем рандомно два неповторяющихся города из списка
+    # Берем рандомно два неповторяющихся города из списка
     dispatch_city, destination_city = choice_cities(cities)
 
-    #  Возьмем рандомные значения веса и объема
+    # Возьмем рандомные значения веса и объема
     volume = various_data.value_volume
     weight = various_data.value_weight
 
@@ -90,7 +90,7 @@ def check_data_transfer_from_mini_calculator(params):
                 status_and_name_tst[desc] = status
                 return status_and_name_tst
 
-        """2. Проверка переноса населенных пунктов"""
+        """2. Проверка переноса объема и веса"""
         def checking_volume_and_weight_transfer():
             description = "Проверка переноса объема и веса"
 
@@ -114,8 +114,8 @@ def check_data_transfer_from_mini_calculator(params):
                 check_text_attribute(params, btn_destination_terminal_check_status.xpath, 'active')
 
                 # Вернемся на главную
-                set_page(params, url_base_dev)
-                wait_page(params, url_base_dev)
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
                 price_to_load(params)
 
                 # Ищем кнопку до адреса и кликаем
@@ -136,8 +136,8 @@ def check_data_transfer_from_mini_calculator(params):
                 check_text_attribute(params, btn_destination_address.xpath, 'active')
 
                 # Вернемся на главную
-                set_page(params, url_base_dev)
-                wait_page(params, url_base_dev)
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
                 price_to_load(params)
 
                 # Ищем кнопку от адреса и кликаем

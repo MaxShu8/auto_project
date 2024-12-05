@@ -233,6 +233,7 @@ def checking_file_availability_on_partners(driver):
             check_try(0, 1, 1)
         driver.close(), driver.quit()
 
+
 def main_monitoring_func():
     time_now = datetime.datetime.now()
     current_time_hour = time_now.hour

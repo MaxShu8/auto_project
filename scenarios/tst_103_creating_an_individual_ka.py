@@ -10,7 +10,7 @@ def check_creating_an_individual_ka(params):
     status_and_name_tst = {}
 
     try:
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
 
         """1. Создание Контрагента (Физическое лицо), Россия, российский номер телефона"""
         def creating_an_individual_ka_ru_phone():

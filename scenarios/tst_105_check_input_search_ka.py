@@ -10,7 +10,7 @@ def check_input_search_individual_and_legal_entity_ka(params):
 
     try:
         """Авторизовываемся и переходим на страницу контрагентов"""
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
 
         set_page(params, url_contractors_org)
         wait_page(params, url_contractors_org)
@@ -62,37 +62,37 @@ def check_input_search_individual_and_legal_entity_ka(params):
                 find_el(params, inp_search_ka_on_the_contractor_page.xpath)
                 click(params)
 
-                send_keys(params, company_name)
+                send_keys(params, company_name2)
                 send_keys(params, Keys.ENTER, False)
 
                 enable_loader(params, 15)
 
                 # Проверим есть ли данная карточка в списке с искомым наименованием компании
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
 
                 # Поиск по ИНН компании
                 find_el(params, inp_search_ka_on_the_contractor_page.xpath)
                 click(params)
 
-                send_keys(params, company_inn_number)
+                send_keys(params, company_inn_number2)
                 send_keys(params, Keys.ENTER, False)
 
                 enable_loader(params, 15)
 
                 # Проверим есть ли данная карточка в списке с искомым ИНН компании
-                find_el(params, f"//span[@title='{company_inn_number}']")
+                find_el(params, f"//span[@title='{company_inn_number2}']")
 
                 # Поиск по КПП компании
                 find_el(params, inp_search_ka_on_the_contractor_page.xpath)
                 click(params)
 
-                send_keys(params, company_kpp_number)
+                send_keys(params, company_kpp_number2)
                 send_keys(params, Keys.ENTER, False)
 
                 enable_loader(params, 15)
 
                 # Проверим есть ли данная карточка в списке с искомым КПП компании
-                find_el(params, f"//span[@title='{company_kpp_number}']")
+                find_el(params, f"//span[@title='{company_kpp_number2}']")
 
                 # Поиск по имени менеджера компании
                 find_el(params, inp_search_ka_on_the_contractor_page.xpath)

@@ -210,6 +210,13 @@ for k, v in w.items():
 
 failed_tsts = ["123", "456"]
 
+abc = "fff.dfdf/vozovoz/ds.rt/fkfn3124nvsvmn34"
+dfr = "vozovoz"
+
+if dfr in abc:
+    print("good")
+else:
+    print("not")
 
 
 

@@ -15,7 +15,7 @@ def create_order_t_t(params):
             description = "Проверка выбора категории"
 
             try:
-                authorization_lk(params, url_base_org)
+                authorization_lk(params, url_base_org, individual_phone_full, passw)
 
                 """Переходим на страницу оформления заказа"""
                 find_el(params, btn_new_order.xpath)
@@ -48,8 +48,8 @@ def create_order_t_t(params):
                 send_keys(params, value_places)
 
                 """Заполняем участников"""
-                set_counteragent_data(params, 'sender', 'individual')
-                set_counteragent_data(params, 'recipient', 'individual')
+                set_counteragent_data(params, 'sender', 'individual', individual_fio, individual_phone)
+                set_counteragent_data(params, 'recipient', 'individual', individual_fio, individual_phone)
 
                 """Нажимаем на кнопку 'Оформить'"""
                 find_el(params, btn_create_order.xpath)

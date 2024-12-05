@@ -114,7 +114,7 @@ def set_volume(params):
 
 
 """Установка контрагента"""
-def set_counteragent_data(params, role, type_ka):
+def set_counteragent_data(params, role, type_ka, fio, phone):
 
     btn_type = None
     input_fio = None
@@ -158,10 +158,10 @@ def set_counteragent_data(params, role, type_ka):
 
     # Вводим в поле "ФИО"
     find_el(params, input_fio)
-    send_keys(params, individual_fio)
+    send_keys(params, fio)
 
     find_el(params, input_phone)
-    send_keys(params, individual_phone)
+    send_keys(params, phone)
 
 
 """Проверка наличия необходимого города в списке"""  # Не использую - нужно доделать
@@ -350,4 +350,6 @@ def check_try(success, failed, monitoring_type=0):
             pass
     else:
         pass
+
+
 

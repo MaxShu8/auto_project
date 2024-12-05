@@ -62,8 +62,11 @@ value_weight = str(random.randint(1, 99))
 """Данные КА физ.лицо"""
 # Физ.лицо
 individual_fio = "Шумилейко Максим Валерьевич"
+individual_fio_2 = "Иванкин Сергей Алексеевич"
 individual_phone_full = "79990220038"
 individual_phone = "9990220038"
+individual_phone_2_full = "79817842624"
+individual_phone_2 = "9817842624"
 individual_email = "m.shumileiko@vozovoz.ru"
 individual_payment_account = "123123123123"
 individual_bik = "044525974"
@@ -105,6 +108,9 @@ company_email_number = "otpravka@tinko.ru"
 company_email_number_not_full = "@tink"
 company_name = "ООО \"ТОРГОВЫЙ ДОМ ТИНКО\""
 manager_name = "Менеджер"
+company_name2 = "ООО \"ЭДЕЛЬВЕЙС\""
+company_inn_number2 = "7838315731"
+company_kpp_number2 = "784201001"
 
 
 # Юр.лицо КЗ
@@ -146,6 +152,8 @@ cities = ['Санкт-Петербург', 'Красноярск', 'Москва
 # Для формы обратной связи
 test_message = "Тестовое сообщение"
 test_white_space = "   "
+passw = "an2015906"
+passw2 = "123123"
 
 
 

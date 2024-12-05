@@ -9,7 +9,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
     status_and_name_tst = {}
 
     try:
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
         """1. Добавление контакта к КА (ЮР.лицо)"""
         def addition_of_contact_to_the_ka_card():
             description = "Добавление контактов к КА (ЮР.лицо)"
@@ -22,7 +22,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 find_el(params, btn_add_on_the_contractors_main_page.xpath)
 
                 # Поиск необходимого КА
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
                 click(params)
 
                 find_el(params, btn_add_a_contact_on_the_card_contractor.xpath)
@@ -76,7 +76,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 find_el(params, btn_add_on_the_contractors_main_page.xpath)
 
                 # Поиск необходимого КА
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
                 click(params)
 
                 find_el(params, btn_add_a_contact_on_the_card_contractor.xpath)
@@ -126,7 +126,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 find_el(params, btn_add_on_the_contractors_main_page.xpath)
 
                 # Поиск необходимого КА
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
                 click(params)
 
                 # Развернем блок контактов
@@ -204,7 +204,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 find_el(params, btn_add_on_the_contractors_main_page.xpath)
 
                 # Поиск необходимого КА
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
                 click(params)
 
                 # Развернем блок контактов и, заодно, запишем данные счетчика
@@ -231,7 +231,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 find_el(params, btn_add_on_the_contractors_main_page.xpath)
 
                 # Поиск необходимого КА
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
                 click(params)
 
                 # Развернем блок контактов
@@ -283,7 +283,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 find_el(params, btn_add_on_the_contractors_main_page.xpath)
 
                 # Поиск необходимого КА
-                find_el(params, f"//span[@title='{company_name}']")
+                find_el(params, f"//span[@title='{company_name2}']")
                 click(params)
 
                 find_el(params, btn_add_a_contact_on_the_card_contractor.xpath)

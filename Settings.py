@@ -49,7 +49,7 @@ def driver_start():
 
     except Exception as e:
         err = f"\nОшибка при установке драйвера:"
-        send_message_tg(f'{err}\nПроизошла ошибка в тесте\n{e}', token, chat_id)
+        send_message_tg(f'{err}\n{e}', token, chat_id)
 
     return driver
 
@@ -110,7 +110,7 @@ def calc_partners_stat():
 #     params.quit()
 
 
-def authorization_lk(params, domain):
+def authorization_lk(params, domain, login, password):
 
     try:
         # Загружаем страницу
@@ -122,11 +122,11 @@ def authorization_lk(params, domain):
         Methods.find_el(params, site_objects.btn_personal_area.xpath)
         Methods.click(params)
         Methods.find_el(params, site_objects.inp_login.xpath)
-        Methods.send_keys(params, '79990220038')
+        Methods.send_keys(params, login)
         Methods.find_el(params, site_objects.btn_continue.xpath)
         Methods.click(params)
         Methods.find_el(params, site_objects.inp_password.xpath)
-        Methods.send_keys(params, 'an2015906')
+        Methods.send_keys(params, password)
         Methods.find_el(params, site_objects.btn_login.xpath)
         Methods.click(params)
 
@@ -192,14 +192,13 @@ def recording_capability():
 def record_timer(func, session):
 
     """Каждый раз запускаем новую сессию драйвера (с одной сессией разные тесты не работают)"""
-
     start = time.time()
     desc = func(session)  # ('Тест №61 - Проверка категории груза', {'Проверка выбора категории': False}, None, None)
     end = time.time()
 
     result = end - start
     # возврат описания теста и времени прохода
-    return list(desc)[0], list(desc)[1], round(result, 2)
+    return list(desc)[0], list(desc)[1], round(result, 1)
 
 
 def tst_passed(status, description):

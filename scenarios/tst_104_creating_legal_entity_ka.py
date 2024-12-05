@@ -9,7 +9,7 @@ def check_creating_legal_entity_ka(params):
     status_and_name_tst = {}
 
     try:
-        authorization_lk(params, url_base_org)
+        authorization_lk(params, url_base_org, individual_phone_full, passw)
 
         """1. Создание Контрагента (Юридическое лицо) Россия"""
         def creating_a_legal_entity_ka_ru():

@@ -134,8 +134,8 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 click(params)
 
                 # Редактирование карточки контакта
-                current_fio = get_the_text(params, text_fio_contact_on_the_card_contractor.xpath)
-                current_phone = get_the_text(params, text_phone_contact_on_the_card_contractor.xpath)
+                current_fio = get_the_data_from_element(params, text_fio_contact_on_the_card_contractor.xpath)
+                current_phone = get_the_data_from_element(params, text_phone_contact_on_the_card_contractor.xpath)
 
                 find_el(params, btn_editing_contact_on_the_card_contractor.xpath)
                 click(params)
@@ -208,14 +208,14 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 click(params)
 
                 # Развернем блок контактов и, заодно, запишем данные счетчика
-                value_counter = get_the_text(params, text_the_contact_counter_in_the_contacts_with_counterparties_block.xpath)
+                value_counter = get_the_data_from_element(params, text_the_contact_counter_in_the_contacts_with_counterparties_block.xpath)
 
                 find_el(params, btn_the_expand_contact_block_button_in_the_counterparty_card_contractor.xpath)
                 click(params)
 
                 # Запишем данные контакта, чтобы в дальнейшем проверить его удаление/не удаление
-                current_fio = get_the_text(params, text_fio_contact_on_the_card_contractor.xpath)
-                current_phone = get_the_text(params, text_phone_contact_on_the_card_contractor.xpath)
+                current_fio = get_the_data_from_element(params, text_fio_contact_on_the_card_contractor.xpath)
+                current_phone = get_the_data_from_element(params, text_phone_contact_on_the_card_contractor.xpath)
 
                 # Удаление карточки контакта (отмена удаления)
                 find_el(params, btn_delete_contact_on_the_card_contractor.xpath)
@@ -250,7 +250,7 @@ def checking_the_addition_of_contacts_to_the_ka_card(params):
                 click(params)
 
                 # Проверим удаление контакта
-                value_counter_1 = get_the_text(params, text_the_contact_counter_in_the_contacts_with_counterparties_block.xpath)
+                value_counter_1 = get_the_data_from_element(params, text_the_contact_counter_in_the_contacts_with_counterparties_block.xpath)
 
                 if value_counter != value_counter_1:
                     pass

@@ -133,7 +133,7 @@ def check_data_transfer_from_mini_calculator(params):
 
                 # Проверим выбраны ли кнопки "Терминал" -> "Адрес", которые выбрали ранее
                 check_text_attribute(params, btn_dispatch_terminal_check_status.xpath, 'active')
-                check_text_attribute(params, btn_destination_address.xpath, 'active')
+                check_text_attribute(params, btn_destination_address_check_status.xpath, 'active')
 
                 # Вернемся на главную
                 set_page(params, url_base_org)
@@ -161,7 +161,7 @@ def check_data_transfer_from_mini_calculator(params):
                 price_to_load(params)
 
                 # Проверим выбраны ли кнопки "Адрес" -> "ПВЗ", которые выбрали ранее
-                check_text_attribute(params, btn_dispatch_address.xpath, 'active')
+                check_text_attribute(params, btn_dispatch_address_check_status.xpath, 'active')
                 check_text_attribute(params, btn_destination_pvz.xpath, 'active')
 
                 # Отправляем статус успешности прогона теста

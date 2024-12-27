@@ -11,9 +11,14 @@ from scenarios.tst_16_check_cargo_tracking import check_cargo_tracking
 from scenarios.tst_22_sending_feedback_forms import sending_feedback_forms
 from scenarios.tst_36_1_create_order_t_t import create_order_t_t
 # from scenarios.tst_36_2_create_order_t_t_cycle import create_order_t_t_cycle
+from scenarios.tst_37_create_order_terminal_address import create_order_terminal_address
+from scenarios.tst_38_41_create_order_terminal_pvz_address_pvz import create_order_terminal_pvz_address_pvz
+from scenarios.tst_43_create_order_to_from_kazakhstan import create_order_from_to_kazakhstan
 from scenarios.tst_45_choice_of_another_currency import checking_the_choice_of_another_currency
 from scenarios.tst_61_setting_the_cargo_category import checking_the_category_selection
 from scenarios.tst_78_checking_the_order_search_field import checking_input_search_number_order
+from scenarios.tst_87_cancellation_of_order import cancellation_of_order
+from scenarios.tst_95_checking_the_data_in_the_blocks_in_the_order_details import check_the_data_in_the_blocks_in_the_order_details
 from scenarios.tst_103_creating_an_individual_ka import check_creating_an_individual_ka
 from scenarios.tst_104_creating_legal_entity_ka import check_creating_legal_entity_ka
 from scenarios.tst_105_check_input_search_ka import check_input_search_individual_and_legal_entity_ka
@@ -24,7 +29,7 @@ from scenarios.tst_118_creating_claim_individual_and_legal_entity import creatin
 
 def running_for_debug():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
-    tests = [creating_claim_individual_and_legal_entity_in_the_ka_card]
+    tests = [create_order_t_t]
 
     success_counter = 0
     failed_tsts = []
@@ -68,7 +73,7 @@ def running_of_all():
              check_data_transfer_from_mini_calculator, sending_feedback_forms, checking_the_choice_of_another_currency,
              checking_the_category_selection, checking_input_search_number_order, check_creating_an_individual_ka,
              check_creating_legal_entity_ka, check_input_search_individual_and_legal_entity_ka, hiding_the_payer,
-             checking_the_addition_of_contacts_to_the_ka_card]
+             checking_the_addition_of_contacts_to_the_ka_card, cancellation_of_order]
 
     success_counter = 0
     failed_tsts = []

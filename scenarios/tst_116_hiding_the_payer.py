@@ -67,7 +67,7 @@ def hiding_the_payer(params):
 
                 # Поиск номера заказа после создания
                 find_el(params, text_number_order_after_create.xpath)
-                a = get_the_text(params, text_number_order_after_create.xpath)
+                a = get_the_data_from_element(params, text_number_order_after_create.xpath)
                 number_of_order = extract_numbers(a)   # Получим номер заказа
 
                 # Переходим в "Контрагенты" и проверяем активен ли переключатель "Скрыть стоимость"

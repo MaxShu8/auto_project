@@ -48,8 +48,8 @@ def create_order_t_t(params):
                 send_keys(params, value_places)
 
                 """Заполняем участников"""
-                set_counteragent_data(params, 'sender', 'individual', individual_fio, individual_phone)
-                set_counteragent_data(params, 'recipient', 'individual', individual_fio, individual_phone)
+                set_counteragent_data(params, 'sender', 'corporation', company_inn_number)
+                set_counteragent_data(params, 'recipient', 'individual', individual_fio)
 
                 """Нажимаем на кнопку 'Оформить'"""
                 find_el(params, btn_create_order.xpath)

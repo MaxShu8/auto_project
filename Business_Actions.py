@@ -29,14 +29,16 @@ def set_dispatch_city(params, dispatch_city):
     send_keys(params, Keys.CONTROL + "a")
     send_keys(params, Keys.BACK_SPACE)
     send_keys(params, dispatch_city)
-    # a, b = choice_cities(cities)
-    # send_keys(params, a)
-    time.sleep(3)  # переделать прогрузку списка
 
-    # find_el(params, list_input_dispatch.xpath)
-    find_el(params, f"//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), '{dispatch_city}')]/..")
+    # time.sleep(3)  # переделать прогрузку списка
+
+    # Подставим нас. пункт в xpath и найдем созданный заказ в списке заказов
+    choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page.change_xpath(dispatch_city)
+    find_el(params, choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page.xpath)
     click(params)
     price_to_load(params)
+
+    # find_el(params, f"//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), '{dispatch_city}')]/..")
 
 
 """Установка города получения в оформлении заказа"""
@@ -46,14 +48,15 @@ def set_destination_city(params, destination_city):
     send_keys(params, Keys.CONTROL + "a")
     send_keys(params, Keys.BACK_SPACE)
     send_keys(params, destination_city)
-    # a, b = choice_cities(cities)
-    # send_keys(params, b)
-    time.sleep(3)  # переделать прогрузку списка
+    # time.sleep(3)  # переделать прогрузку списка
 
-    # find_el(params, list_input_destination.xpath)
-    find_el(params, f"//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), '{destination_city}')]/..")
+    # Подставим нас. пункт в xpath и найдем созданный заказ в списке заказов
+    choice_us_item_from_drop_down_list_in_destination_in_create_order_page.change_xpath(destination_city)
+    find_el(params, choice_us_item_from_drop_down_list_in_destination_in_create_order_page.xpath)
     click(params)
     price_to_load(params)
+
+    # find_el(params, f"//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), '{destination_city}')]/..")
 
 
 def set_dispatch_city_mini_calc(params, dispatch_city):
@@ -114,10 +117,11 @@ def set_volume(params):
 
 
 """Установка контрагента"""
-def set_counteragent_data(params, role, type_ka, fio, phone):
+def set_counteragent_data(params, role, type_ka, name, phone=0):
 
     btn_type = None
     input_fio = None
+    input_company_name = None
     input_phone = None
     input_additional_phone = None
     input_email = None
@@ -133,9 +137,10 @@ def set_counteragent_data(params, role, type_ka, fio, phone):
             checkbox_send = checkbox_send_code_ind_sender.xpath
 
         elif type_ka == 'corporation':
-            btn_type = btn_type_corp.xpath
-            input_phone = input_name_corp.xpath
-            input_additional_phone = input_phone_corp .xpath
+            btn_type = btn_type_corp_sender.xpath
+            input_company_name = input_fio_ind_sender.xpath
+            input_fio = input_name_corp_sender.xpath
+            input_phone = input_phone_corp_sender.xpath
 
     elif role == 'recipient':
         if type_ka == 'individual':
@@ -148,20 +153,35 @@ def set_counteragent_data(params, role, type_ka, fio, phone):
 
         elif type_ka == 'corporation':
             btn_type = btn_type_corp.xpath
-            input_phone = input_name_corp.xpath
+            input_fio = input_name_corp.xpath
             input_additional_phone = input_phone_corp.xpath
 
-    # Нажимаем на кнопку "Физ.лицо"
-    move_to_element(params, btn_type)
+    # Нажимаем на кнопку "Физ.лицо"/"Юр.лицо"
     find_el(params, btn_type)
     click(params)
 
-    # Вводим в поле "ФИО"
     find_el(params, input_fio)
-    send_keys(params, fio)
+    send_keys(params, name)
 
-    find_el(params, input_phone)
-    send_keys(params, phone)
+    if type_ka == 'individual':
+
+        # Выбираем ФИО из выпадающего списка
+        choice_name_ka_in_drop_down_list_of_companies_create_order_page.change_xpath(name)
+        find_el(params, choice_name_ka_in_drop_down_list_of_companies_create_order_page.xpath)
+        click(params)
+
+    elif type_ka == 'corporation':
+
+        # Выбираем компанию из выпадающего списка
+        choice_company_in_drop_down_list_of_companies_create_order_page.change_xpath(name)
+        find_el(params, choice_company_in_drop_down_list_of_companies_create_order_page.xpath)
+        click(params)
+
+        find_el(params, input_company_name)
+        send_keys(params, individual_fio)
+
+        find_el(params, input_phone)
+        send_keys(params, individual_phone)
 
 
 """Проверка наличия необходимого города в списке"""  # Не использую - нужно доделать

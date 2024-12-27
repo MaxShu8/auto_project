@@ -73,7 +73,7 @@ def creating_claim_individual_and_legal_entity_in_the_ka_card(params):
                 #     click(params)
 
                 check_text_attribute(params, text_notification_the_claim_has_been_registered.xpath, 'претензия зарегистрирована')
-                a = get_the_text(params, text_notification_the_claim_has_been_registered.xpath)
+                a = get_the_data_from_element(params, text_notification_the_claim_has_been_registered.xpath)
                 number_of_claim = extract_numbers(a)
 
                 """Переходим на страницу контрагентов"""

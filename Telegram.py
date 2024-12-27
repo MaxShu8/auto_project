@@ -192,31 +192,23 @@ url_contractors_dev = f"https://vozovoz.{domain}/personal/contractors/"
 
 w = {"Проверка груза": True, "Проверка категории": False}
 
-# a = {b: c}
-# w[b] = c
-# w[e] = d
-#
-# print(w)
-
-for k, v in w.items():
-    if v is False:
-        print("False")
-
-# if False in w:
-#     print("f")
-#
-# else:
-#     pass
 
 failed_tsts = ["123", "456"]
 
 abc = "fff.dfdf/vozovoz/ds.rt/fkfn3124nvsvmn34"
 dfr = "vozovoz"
 
-if dfr in abc:
-    print("good")
-else:
-    print("not")
+a = ["Мешки, Мешок 55×105 см, 1 шт.", "Коробки, 2", "Сетки, черные"]
+b = ["Мешок 55×105 см", "Сетки", "черные"]
+
+
+a = [1, 2, 3, 4, 5, 6]
+b = [3, 6]
+
+# Проверка наличия всех элементов списка b в списке a
+all_elements_in_a = all(elem in a for elem in b)
+
+print(all_elements_in_a)
 
 
 

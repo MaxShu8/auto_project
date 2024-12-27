@@ -7,6 +7,7 @@ import site_objects
 from site_objects import *
 import various_data
 from various_data import *
+from pages.order_create_page import *
 
 
 current_element = None
@@ -234,8 +235,12 @@ def find_els(params, xpath):
 
     try:
         params.implicitly_wait(5)
-        params.current_element = WebDriverWait(params, element_time_out).until(ec.visibility_of_element_located((By.XPATH, xpath)))
-        params.find_elements(By.XPATH, site_object)
+        # return WebDriverWait(params, element_time_out).until(ec.visibility_of_element_located((By.XPATH, xpath)))
+        a = WebDriverWait(params, element_time_out).until(ec.presence_of_all_elements_located((By.XPATH, xpath)))
+
+        return a
+        # a = params.find_elements(By.XPATH, site_object)
+        #  a
 
     except WebDriverException as e:
         err = f"\nОшибка: {e}\nМетод: wait_invisibility_element"
@@ -288,8 +293,10 @@ def find_number_order(params):
         send_message_tg(err_short, token, group_id_predprod)
 
 
-def check_text_attribute(params, xpath, value, pass_exception=False):
+def check_text_attribute(params, xpath, value, pass_exception=False, check_range=False):
+    """"""
     try:
+        move_to_element(params, xpath)
         a = WebDriverWait(params, element_time_out, 1).until(ec.visibility_of_element_located((By.XPATH, xpath)))
         a.find_element(By.XPATH, xpath)
 
@@ -309,19 +316,37 @@ def check_text_attribute(params, xpath, value, pass_exception=False):
             including_text = 'None'
 
         # Проверка указанного значения по включению в атрибуты, текст
-        if value in including_class:
-            pass
-        elif value in including_name:
-            pass
-        elif value in including_value:
-            pass
-        elif value in including_text:
-            pass
-        else:
-            if pass_exception is True:
-                return False
+        if check_range is False:
+            if value in including_class:
+                pass
+            elif value in including_name:
+                pass
+            elif value in including_value:
+                pass
+            elif value in including_text:
+                pass
             else:
-                raise Exception
+                if pass_exception is True:
+                    return False
+                else:
+                    raise Exception
+        else:
+            list_figures = []
+            new_value = float(value)
+            list_figures.append(new_value)
+            list_figures.append(int(new_value))
+            list_figures.append(round((new_value - 0.01), 2))
+            list_figures.append(round((new_value + 0.01), 2))
+            list_figures.append(round((new_value - 0.1), 1))
+            list_figures.append(round((new_value + 0.1), 1))
+
+            if any(str(item) in including_text for item in list_figures):
+                pass
+            else:
+                if pass_exception is True:
+                    return False
+                else:
+                    raise Exception
 
     except Exception:
         err = f"Значение атрибута: {value} - не соответствует ожидаемому"
@@ -380,12 +405,42 @@ def upload_file(params, xpath):
         raise Exception(err)
 
 
-def get_the_text(params, xpath):
-    a = WebDriverWait(params, element_time_out, 1).until(ec.visibility_of_element_located((By.XPATH, xpath)))
-    a.find_element(By.XPATH, xpath)
+def get_the_data_from_element(params, xpath, what_to_get=0):
+    """По дефолту возвращает текст элемента, но если передать: 1 - возвращает value элемента
+    2 - класс элемента"""
 
-    including_text = a.text  # выгружает текст
-    return including_text
+    a = WebDriverWait(params, element_time_out, 1).until(ec.visibility_of_element_located((By.XPATH, xpath)))
+    if what_to_get == 1:
+        including_value = a.get_attribute('value')
+        return including_value
+    elif what_to_get == 2:
+        including_class = a.get_attribute('class')
+        return including_class
+    else:
+        a.find_element(By.XPATH, xpath)
+        including_text = a.text  # выгружает текст
+        return including_text
+
+
+def get_the_data_from_block_of_elements(params, xpath, what_to_get=0):
+    """"""
+    list_of_data = []
+    a = WebDriverWait(params, element_time_out, 1).until(ec.presence_of_all_elements_located((By.XPATH, xpath)))
+
+    for element in a:
+        if what_to_get == 1:
+            including_value = element.get_attribute('value')
+            list_of_data.append(including_value)
+
+        elif what_to_get == 2:
+            including_class = element.get_attribute('class')
+            list_of_data.append(including_class)
+        else:
+            element.find_element(By.XPATH, xpath)
+            including_text = element.text  # выгружает текст
+            list_of_data.append(including_text)
+
+    return list_of_data
 
 
 def extract_numbers(string_value):
@@ -394,7 +449,7 @@ def extract_numbers(string_value):
     counter = 0
 
     for char in string_value:
-        if char.isdigit() and counter < 10:
+        if char.isdigit() and counter < 11:
             current_number += char
             counter += 1
 
@@ -424,5 +479,16 @@ def enable_element(params, xpath, timeout=30):
         pass
 
 
+def exist_elements_of_list_in_list(list_a, list_b):
+    """Проверка включения всех элементов списка a в списке b"""
+    try:
+        result = all(any(package in item for item in list_a) for package in list_b)
+        if result is True:
+            pass
+        else:
+            err = "Отсутствуют совпадения двух списков"
+            raise Exception(err)
 
+    except Exception:
+        pass
 

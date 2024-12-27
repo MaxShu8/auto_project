@@ -1,4 +1,5 @@
 from various_data import *
+import copy
 
 
 """URL сайтов (dev, org, ru)"""
@@ -49,6 +50,14 @@ class SiteObjects:
     def __init__(self, description, xpath):
         self.description = description
         self.xpath = xpath
+        self.copy_xpath = copy.copy(self.xpath)
+
+    def change_xpath(self, element):
+        self.xpath = self.xpath.replace("xxx", element)
+
+    def reset_xpath(self):
+        self.xpath = self.copy_xpath
+
 
 
 """Окно авторизации/регистрации"""
@@ -630,12 +639,15 @@ input_dispatch_city = SiteObjects("Инпут 'НП отправления' в �
                                   "//div[contains(text(),'Отправка')]/ancestor::div[@class='vz-direction-card']/div[2]//input[@class='vz-input-control big']")
 
 input_dispatch_address = SiteObjects("Инпут 'Адрес отправления' в создании заказа",
-                                     "//div[contains(text(),'Отправка')]/..//input[@placeholder='Улица, дом']")
+                                     "//div[contains(text(),'Отправка')]/../..//input[@placeholder='Улица, дом']")
 
 list_input_dispatch = SiteObjects("Список нас.пунктов 'Отправка' создание заказа",
                                   "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll')][1]")
 
 btn_dispatch_address = SiteObjects("Кнопка 'Адрес' в отправке в создании заказа",
+                                   "//div[contains(text(),'Отправка')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]")
+
+btn_dispatch_address_check_status = SiteObjects("Кнопка 'Адрес' в отправке в создании заказа",
                                    "//div[contains(text(),'Отправка')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]/..")
 
 btn_dispatch_terminal = SiteObjects("Кнопка 'Терминал' в отправке в создании заказа",
@@ -648,16 +660,22 @@ input_destination_city = SiteObjects("Инпут 'НП прибытия' в со
                                      "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']/div[1]//input[@class='vz-input-control big']")
 
 input_destination_address = SiteObjects("Инпут 'Адрес прибытия' в создании заказа",
-                                        "//div[contains(text(),'Прибытие')]/..//input[@placeholder='Улица, дом']")
+                                        "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Улица, дом']")
+
+input_destination_pvz = SiteObjects("Инпут 'Пункт выдачи' в создании заказа",
+                                        "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Введите улицу для поиска']")
 
 btn_destination_address = SiteObjects("Кнопка 'Адрес' в прибытии в создании заказа",
-                                      "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]/..")
+                                      "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]")
 
 btn_destination_terminal = SiteObjects("Кнопка 'Терминал' в прибытии в создании заказа",
                                        "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Терминал')]")
 
 btn_destination_terminal_check_status = SiteObjects("Кнопка 'Терминал' в прибытии в создании заказа",
                                                     "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Терминал')]/..")
+
+btn_destination_address_check_status = SiteObjects("Кнопка 'Адрес' для проверки включена или нет",
+                                                 "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]/..")
 
 btn_destination_pvz = SiteObjects("Кнопка 'Пункт выдачи' в прибытии в создании заказа",
                                   "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Пункт')]/..")

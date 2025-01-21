@@ -236,7 +236,7 @@ btn_cancel_delete_contact_on_the_popup_deleting_contact_on_card_contractor = Sit
 """Различные уведомления"""
 text_notification_the_claim_has_been_registered = SiteObjects(
     "Уведомление о том, что претензия зарегистрирована",
-    "//div[contains(@class, 'vz-toast-wrapper-content')]/span[contains(., 'претензия зарегистрирована')]")
+    "//div[contains(@class, 'vz-toast-wrapper-content')]/span")
 
 """Претензии"""
 btn_show_collapse_counterparty_claims_on_card_contractor = SiteObjects(

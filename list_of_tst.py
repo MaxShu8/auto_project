@@ -9,13 +9,17 @@ from scenarios.tst_14_check_mini_calculator import check_mini_calculator
 from scenarios.tst_15_check_data_transfer_from_mini_calculator import check_data_transfer_from_mini_calculator
 from scenarios.tst_16_check_cargo_tracking import check_cargo_tracking
 from scenarios.tst_22_sending_feedback_forms import sending_feedback_forms
+from scenarios.tst_27_checking_the_file_formation_when_calculating_tariffs import checking_the_file_formation_when_calculating_tariffs
 from scenarios.tst_36_1_create_order_t_t import create_order_t_t
 # from scenarios.tst_36_2_create_order_t_t_cycle import create_order_t_t_cycle
 from scenarios.tst_37_create_order_terminal_address import create_order_terminal_address
 from scenarios.tst_38_41_create_order_terminal_pvz_address_pvz import create_order_terminal_pvz_address_pvz
+from scenarios.tst_42_create_order_to_from_belarus import create_order_from_to_belarus
 from scenarios.tst_43_create_order_to_from_kazakhstan import create_order_from_to_kazakhstan
 from scenarios.tst_45_choice_of_another_currency import checking_the_choice_of_another_currency
+from scenarios.tst_46_checking_the_date_selection_from_the_feed_and_from_the_calendar import checking_the_date_selection_from_feed_and_calendar
 from scenarios.tst_61_setting_the_cargo_category import checking_the_category_selection
+from scenarios.tst_64_checking_the_indication_of_all_types_of_insurance import checking_the_indication_of_all_types_of_insurance
 from scenarios.tst_78_checking_the_order_search_field import checking_input_search_number_order
 from scenarios.tst_87_cancellation_of_order import cancellation_of_order
 from scenarios.tst_95_checking_the_data_in_the_blocks_in_the_order_details import check_the_data_in_the_blocks_in_the_order_details
@@ -29,12 +33,12 @@ from scenarios.tst_118_creating_claim_individual_and_legal_entity import creatin
 
 def running_for_debug():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
-    tests = [create_order_t_t]
+    tests = [creating_claim_individual_and_legal_entity_in_the_ka_card]
 
     success_counter = 0
     failed_tsts = []
     failed_counter = 0
-    sum_duration = round(0, 2)
+    sum_duration = 0.0
     desc_main = ""
 
     for i in tests:
@@ -53,7 +57,8 @@ def running_for_debug():
                 msg = f"{failed_counter}. 🚫 - {name_test}\n"
                 failed_tsts.append(msg)
 
-    statistic_msg = f"🅰️ Ретест автотеста '{desc_main}': {success_counter} из {success_counter + failed_counter}\nОбщее время: {sum_duration} сек.\n"
+    print(sum_duration)
+    statistic_msg = f"🅰️ Ретест автотеста '{desc_main}': {success_counter} из {success_counter + failed_counter}\nОбщее время: {round(sum_duration, 1)} сек.\n"
 
     # Проверим, есть ли упавшие тесты, и если да, то добавим эту информацию в статистику
     if failed_counter > 0:
@@ -69,11 +74,30 @@ def running_for_debug():
 
 def running_of_all():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
-    tests = [check_authorization_mobile, check_authorization_email, check_cargo_tracking,
-             check_data_transfer_from_mini_calculator, sending_feedback_forms, checking_the_choice_of_another_currency,
-             checking_the_category_selection, checking_input_search_number_order, check_creating_an_individual_ka,
-             check_creating_legal_entity_ka, check_input_search_individual_and_legal_entity_ka, hiding_the_payer,
-             checking_the_addition_of_contacts_to_the_ka_card, cancellation_of_order]
+    tests = [check_authorization_mobile,
+             check_authorization_email,
+             check_data_transfer_from_mini_calculator,
+             check_cargo_tracking,
+             sending_feedback_forms,
+             checking_the_file_formation_when_calculating_tariffs,
+             create_order_t_t,
+             create_order_terminal_address,
+             create_order_terminal_pvz_address_pvz,
+             create_order_from_to_belarus,
+             create_order_from_to_kazakhstan,
+             checking_the_choice_of_another_currency,
+             checking_the_date_selection_from_feed_and_calendar,
+             checking_the_category_selection,
+             checking_the_indication_of_all_types_of_insurance,
+             checking_input_search_number_order,
+             cancellation_of_order,
+             check_the_data_in_the_blocks_in_the_order_details,
+             check_creating_an_individual_ka,
+             check_creating_legal_entity_ka,
+             check_input_search_individual_and_legal_entity_ka,
+             hiding_the_payer,
+             checking_the_addition_of_contacts_to_the_ka_card,
+             creating_claim_individual_and_legal_entity_in_the_ka_card]
 
     success_counter = 0
     failed_tsts = []
@@ -110,6 +134,6 @@ def running_of_all():
         send_message_tg(statistic_msg, token, chat_id)
 
 
-running_for_debug()
-# running_of_all()
+# running_for_debug()
+running_of_all()
 

@@ -34,7 +34,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Проверим, что загрузились нужные данные
                 check_text_attribute(params, inp_phone_on_the_popup_new_contractor.xpath, '+7 (967) 979-97-93')
@@ -44,7 +44,7 @@ def check_creating_an_individual_ka(params):
                 find_el(params, btn_next_or_add_on_the_popup_new_contractor.xpath)
                 click(params)
 
-                enable_loader(params, 45)
+                enable_loader(params, 60)
 
                 # Обновляем страницу и проверяем, что карточка КА появилась в списке физ. лиц
                 params.refresh()
@@ -94,7 +94,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Проверим, что загрузились нужные данные
                 # check_text_attribute(params, inp_phone_on_the_popup_new_contractor.xpath, '+375 (77) 777-77-77')
@@ -113,7 +113,7 @@ def check_creating_an_individual_ka(params):
                 find_el(params, btn_next_or_add_on_the_popup_new_contractor.xpath)
                 click(params, True)  # Передадим True для того, чтобы исключить тот момент, если ошибка все еще висит
 
-                enable_loader(params, 45)
+                enable_loader(params, 60)
 
                 # Обновляем страницу и проверяем, что карточка КА появилась в списке физ. лиц
                 params.refresh()
@@ -126,7 +126,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Убедимся, что это нужный КА
                 find_el(params, text_name_ka_on_the_card_create_contractor.xpath)
@@ -180,7 +180,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Проверим, что загрузились нужные данные
                 # check_text_attribute(params, inp_phone_on_the_popup_new_contractor.xpath, '+375 (77) 777-77-77')
@@ -195,7 +195,7 @@ def check_creating_an_individual_ka(params):
                 click(params, True)  # Передадим True для того, чтобы исключить тот момент, если ошибка все еще висит
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 45)
+                enable_loader(params, 60)
 
                 # Обновляем страницу и проверяем, что карточка КА появилась в списке физ. лиц
                 params.refresh()
@@ -209,7 +209,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Убедимся, что это нужный КА
                 find_el(params, text_name_ka_on_the_card_create_contractor.xpath)
@@ -269,7 +269,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Проверим, что загрузились нужные данные
                 # check_text_attribute(params, inp_phone_on_the_popup_new_contractor.xpath, '+375 (77) 777-77-77')
@@ -284,7 +284,7 @@ def check_creating_an_individual_ka(params):
                 click(params, True)  # Передадим True для того, чтобы исключить тот момент, если ошибка все еще висит
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 45)
+                enable_loader(params, 60)
 
                 # Обновляем страницу и проверяем, что карточка КА появилась в списке физ. лиц
                 params.refresh()
@@ -298,7 +298,7 @@ def check_creating_an_individual_ka(params):
                 click(params)
 
                 # Подождем пока исчезнет лоадер (получим ответ от 1С)
-                enable_loader(params, 15)
+                enable_loader(params, 20)
 
                 # Убедимся, что это нужный КА
                 find_el(params, text_name_ka_on_the_card_create_contractor.xpath)

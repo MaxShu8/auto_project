@@ -29,8 +29,7 @@ def set_dispatch_city(params, dispatch_city):
     send_keys(params, Keys.CONTROL + "a")
     send_keys(params, Keys.BACK_SPACE)
     send_keys(params, dispatch_city)
-
-    # time.sleep(3)  # переделать прогрузку списка
+    time.sleep(1.5)  # переделать прогрузку списка
 
     # Подставим нас. пункт в xpath и найдем созданный заказ в списке заказов
     choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page.change_xpath(dispatch_city)
@@ -38,6 +37,7 @@ def set_dispatch_city(params, dispatch_city):
     click(params)
     price_to_load(params)
 
+    choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page.reset_xpath()
     # find_el(params, f"//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), '{dispatch_city}')]/..")
 
 
@@ -48,7 +48,7 @@ def set_destination_city(params, destination_city):
     send_keys(params, Keys.CONTROL + "a")
     send_keys(params, Keys.BACK_SPACE)
     send_keys(params, destination_city)
-    # time.sleep(3)  # переделать прогрузку списка
+    time.sleep(1.5)  # переделать прогрузку списка
 
     # Подставим нас. пункт в xpath и найдем созданный заказ в списке заказов
     choice_us_item_from_drop_down_list_in_destination_in_create_order_page.change_xpath(destination_city)
@@ -56,6 +56,7 @@ def set_destination_city(params, destination_city):
     click(params)
     price_to_load(params)
 
+    choice_us_item_from_drop_down_list_in_destination_in_create_order_page.reset_xpath()
     # find_el(params, f"//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), '{destination_city}')]/..")
 
 
@@ -141,6 +142,7 @@ def set_counteragent_data(params, role, type_ka, name, phone=0):
             input_company_name = input_fio_ind_sender.xpath
             input_fio = input_name_corp_sender.xpath
             input_phone = input_phone_corp_sender.xpath
+            input_email = input_email_corp_sender.xpath
 
     elif role == 'recipient':
         if type_ka == 'individual':
@@ -152,9 +154,11 @@ def set_counteragent_data(params, role, type_ka, name, phone=0):
             checkbox_send = checkbox_send_code_ind_recipient.xpath
 
         elif type_ka == 'corporation':
-            btn_type = btn_type_corp.xpath
-            input_fio = input_name_corp.xpath
-            input_additional_phone = input_phone_corp.xpath
+            btn_type = btn_type_corp_recipient.xpath
+            input_fio = input_name_corp_recipient.xpath
+            input_company_name = input_fio_corp_recipient.xpath
+            input_phone = input_phone_corp_recipient.xpath
+            input_email = input_email_corp_recipient.xpath
 
     # Нажимаем на кнопку "Физ.лицо"/"Юр.лицо"
     find_el(params, btn_type)
@@ -162,26 +166,32 @@ def set_counteragent_data(params, role, type_ka, name, phone=0):
 
     find_el(params, input_fio)
     send_keys(params, name)
+    time.sleep(1.5)
 
     if type_ka == 'individual':
-
         # Выбираем ФИО из выпадающего списка
         choice_name_ka_in_drop_down_list_of_companies_create_order_page.change_xpath(name)
         find_el(params, choice_name_ka_in_drop_down_list_of_companies_create_order_page.xpath)
         click(params)
 
-    elif type_ka == 'corporation':
+        choice_name_ka_in_drop_down_list_of_companies_create_order_page.reset_xpath()
 
+    elif type_ka == 'corporation':
         # Выбираем компанию из выпадающего списка
         choice_company_in_drop_down_list_of_companies_create_order_page.change_xpath(name)
         find_el(params, choice_company_in_drop_down_list_of_companies_create_order_page.xpath)
         click(params)
+
+        choice_company_in_drop_down_list_of_companies_create_order_page.reset_xpath()
 
         find_el(params, input_company_name)
         send_keys(params, individual_fio)
 
         find_el(params, input_phone)
         send_keys(params, individual_phone)
+
+        find_el(params, input_email)
+        send_keys(params, individual_email)
 
 
 """Проверка наличия необходимого города в списке"""  # Не использую - нужно доделать

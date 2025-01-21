@@ -159,8 +159,11 @@ def cancellation_of_order(params):
                 find_el(params, text_order_status_in_the_order_block_on_orders_page_x.xpath)
 
                 text_order_status_in_the_order_block_on_orders_page_x.reset_xpath()
+
                 text_order_status_in_the_order_block_on_orders_page_x.change_xpath(number_2)
                 find_el(params, text_order_status_in_the_order_block_on_orders_page_x.xpath)
+
+                text_order_status_in_the_order_block_on_orders_page_x.reset_xpath()
 
                 # Отправляем статус успешности прогона теста
                 status, desc = tst_passed(True, description)

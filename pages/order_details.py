@@ -88,9 +88,17 @@ data_cargo_package_in_the_cargo_block_in_details_page = SiteObjects(
     "//div[@class='mt-10']/div[contains(text(), 'Вид упаковки')]")
 
 # Страхование груза
+txt_Insurance_information_on_the_order_details_page = SiteObjects(
+    "Данные о страховании на странице детализации заказа",
+    "//div[contains(text(), 'Страхование')]/..//span")
+
 data_cargo_insurance_in_the_cargo_block_in_details_page = SiteObjects(
     "Данные - страхование груза в блоке Груз",
     "//div[contains(text(), 'Сумма')]/../span[contains(@class, 'vz-cargo-view-item-value')]")
+
+data_amount_of_the_specified_insurance_in_details_page = SiteObjects(
+    "Данные - сумма указанного страхования в блоке Груз",
+    "//div[contains(text(), 'Сумма')]/..//span")
 
 
 """Блок Доп.услуги"""

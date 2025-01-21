@@ -49,6 +49,8 @@ def create_order_terminal_pvz_address_pvz(params):
                 find_el(params, choice_pvz_point_in_destination_in_create_order_page.xpath)
                 click(params)
 
+                choice_pvz_point_in_destination_in_create_order_page.reset_xpath()
+
                 """Заполняем кол-во мест"""
                 find_el(params, input_value_places.xpath)
                 send_keys(params, value_places)

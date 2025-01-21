@@ -27,8 +27,15 @@ def set_page(params, url_page):
 
         page_content = params.page_source
         offer = "offer-card-image"
+        something_went_wrong = "error-page"
+
         if offer in page_content:
             WebDriverWait(params, 20).until(ec.element_to_be_clickable((By.XPATH, btn_offer_card_image_lk.xpath))).click()
+        else:
+            pass
+
+        if something_went_wrong in page_content:
+            params.refresh()
         else:
             pass
 

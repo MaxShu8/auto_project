@@ -64,7 +64,7 @@ def creating_claim_individual_and_legal_entity_in_the_ka_card(params):
 
                 """Клик на кнопку 'Cоздать претензию' на форме обратной связи"""
                 find_el(params, btn_send_claim_popup_feedback.xpath)
-                click(params)
+                click(params, True)
 
                 # Проверим, создалась ли претензия
                 # if check_text_attribute(params, text_notification_the_claim_has_been_registered.xpath, 'претензия зарегистрирована', True) is True:
@@ -72,25 +72,32 @@ def creating_claim_individual_and_legal_entity_in_the_ka_card(params):
                 # else:
                 #     click(params)
 
-                check_text_attribute(params, text_notification_the_claim_has_been_registered.xpath, 'претензия зарегистрирована')
-                a = get_the_data_from_element(params, text_notification_the_claim_has_been_registered.xpath)
-                number_of_claim = extract_numbers(a)
+                time.sleep(1)  # Нужно для появления элемента с ошибкой на странице, чтобы далее скачать страницу
 
-                """Переходим на страницу контрагентов"""
-                set_page(params, url_contractors_org)
-                wait_page(params, url_contractors_org)
+                page_content = params.page_source
+                something_went_wrong = "bottom error"
 
-                # Ищем необходимого КА и переходим в него
-                find_el(params, f"//span[@title='{individual_phone_full}']")
-                click(params)
+                if something_went_wrong in page_content:
+                    check_text_attribute(params, text_notification_the_claim_has_been_registered.xpath, 'уже есть незакрытая претензия')
+                else:
+                    a = get_the_data_from_element(params, text_notification_the_claim_has_been_registered.xpath)
+                    number_of_claim = extract_numbers(a)
 
-                find_el(params, btn_show_collapse_counterparty_claims_on_card_contractor.xpath)
-                click(params)
-                enable_loader(params)
+                    """Переходим на страницу контрагентов"""
+                    set_page(params, url_contractors_org)
+                    wait_page(params, url_contractors_org)
 
-                # Сверяем данные созданной претензии (номер претензии и номер заказа в претензии)
-                check_text_attribute(params, text_the_claim_number_in_the_created_claim.xpath, number_of_claim)
-                check_text_attribute(params, text_the_order_number_in_the_created_claim.xpath, order_mini_calc)
+                    # Ищем необходимого КА и переходим в него
+                    find_el(params, f"//span[@title='{individual_phone_full}']")
+                    click(params)
+
+                    find_el(params, btn_show_collapse_counterparty_claims_on_card_contractor.xpath)
+                    click(params)
+                    enable_loader(params)
+
+                    # Сверяем данные созданной претензии (номер претензии и номер заказа в претензии)
+                    check_text_attribute(params, text_the_claim_number_in_the_created_claim.xpath, number_of_claim)
+                    check_text_attribute(params, text_the_order_number_in_the_created_claim.xpath, order_mini_calc)
 
                 # Отправляем статус успешности прогона теста
                 status, desc = tst_passed(True, description)

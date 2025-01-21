@@ -48,7 +48,17 @@ input_timing_to_dispatch_in_create_order_page = SiteObjects(
 
 choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page = SiteObjects(
     "Выбор нас.пункта из выпадающего списка в Отправка (заменяемый)",
-    "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), 'xxx')]/..")
+    "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item')]//div[contains(text(), 'xxx')]/..")
+
+
+choice_the_active_date_in_the_arrival_feed_in_create_order_page = SiteObjects(
+    "Активная дата в ленте в прибытии",
+    "(//div[contains(@class, 'vz-direction-calendar-calendar-slider-day active')]/div)[1]")
+
+
+
+
+
 
 # Прибытие
 input_timing_from_destination_in_create_order_page = SiteObjects(
@@ -65,7 +75,7 @@ choice_pvz_point_in_destination_in_create_order_page = SiteObjects(
 
 choice_us_item_from_drop_down_list_in_destination_in_create_order_page = SiteObjects(
     "Выбор нас.пункта из выпадающего списка в Отправка (заменяемый)",
-    "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item active')]//div[contains(text(), 'xxx')]/..")
+    "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item')]//div[contains(text(), 'xxx')]/..")
 
 active_btn_destination_terminal_or_address = SiteObjects(
     "Кнопка 'Терминал' в прибытии в создании заказа",
@@ -136,6 +146,34 @@ inp_weight_field_in_the_maximum_dimensions_of_one_place_create_order_page = Site
     "Поле 'Вес' в Максимальные габариты одного места на странице 'Расчет и оформление заказа'",
     "(//span[text()='Вес']/..//input)[2]")
 
+inp_insurance_create_order_page = SiteObjects(
+    "Поле 'Страхование' на странице 'Расчет и оформление заказа'",
+    "//label[contains(text(), 'Страхование')]/../div[@class='vz-select-dropdown-value big']")
+
+choice_without_the_declared_insurance_cost_create_order_page = SiteObjects(
+    "Страхование 'Без объявленной стоимости' на странице 'Расчет и оформление заказа'",
+    "//div[contains(@class, 'vz-select-dropdown-list-item')]/span[contains(text(), 'Без объявленной стоимости')]")
+
+text_without_the_declared_insurance_cost_create_order_page = SiteObjects(
+    "Вид указанного страхования 'Без объявленной стоимости' на странице 'Расчет и оформление заказа'",
+    "//div[contains(@class, 'vz-select-dropdown-list-item')]/span[contains(text(), 'Без объявленной стоимости')]/..")
+
+choice_without_insurance_create_order_page = SiteObjects(
+    "Страхование 'Без страхования' на странице 'Расчет и оформление заказа'",
+    "//div[contains(@class, 'vz-select-dropdown-list-item')]/span[contains(text(), 'Без страхования')]")
+
+choice_with_insurance_create_order_page = SiteObjects(
+    "Страхование 'Страхование груза' на странице 'Расчет и оформление заказа'",
+    "//div[contains(@class, 'vz-select-dropdown-list-item')]/span[contains(text(), 'Страхование груза')]")
+
+inp_amount_for_specifying_the_insurance_amount_create_order_page = SiteObjects(
+    "Поле 'Сумма' для указания суммы страхования на странице 'Расчет и оформление заказа'",
+    "//label[contains(text(), 'Сумма')]/..//input")
+
+txt_type_of_insurance_create_order_page = SiteObjects(
+    "Вид страхования на странице 'Расчет и оформление заказа'",
+    "//label[contains(text(), 'Страхование')]/../div[contains(@class, 'vz-select-dropdown-value')]/..//span")
+
 
 # Категория груза
 inp_cargo_category_in_calculation_and_ordering_page = SiteObjects(
@@ -188,6 +226,7 @@ checkbox_palletizing_at_the_pick_up_terminal_in_the_modal_type_of_packaging_crea
     "Чек-бокс 'Паллетирование на терминале выдачи' в модалке Вид упаковки",
     "//span[text()='Паллетирование на терминале выдачи']")
 
+
 # Доп. упаковка
 checkbox_additional_packaging_in_the_modal_type_of_packaging_create_order_page = SiteObjects(
     "Чек-бокс 'Дополнительная упаковка' в модалке Вид упаковки",
@@ -209,6 +248,7 @@ radiobtn_paperboard_in_the_modal_type_of_packaging_create_order_page = SiteObjec
     "Радиокнопка 'Картон' в модалке Вид упаковки",
     "//span[text()='Дополнительная упаковка']/../../..//span[text()='Картон']")
 
+
 # Коробки
 checkbox_boxes_in_the_modal_type_of_packaging_create_order_page = SiteObjects(
     "Чек-бокс 'Коробки' в модалке Вид упаковки",
@@ -227,6 +267,7 @@ choice_of_box_60_40_40_in_the_modal_type_of_packaging_create_order_page = SiteOb
 checkbox_bags_in_the_modal_type_of_packaging_create_order_page = SiteObjects(
     "Чек-бокс 'Мешки' в модалке Вид упаковки",
     "//span[text()='Мешки']")
+
 
 # Сейф-пакет
 checkbox_safe_package_in_the_modal_type_of_packaging_create_order_page = SiteObjects(
@@ -368,9 +409,35 @@ input_additional_phone_corp_sender = SiteObjects(
     "Кнопка доп. телефон у отправителя юр.лицо",
     "//span[text()='Отправитель']/../..//label[contains(text(),'+ Доп. номер')]")
 
+input_email_corp_sender = SiteObjects(
+    "Поле ФИО у получателя юр.лицо",
+    "//span[text()='Отправитель']/../..//label[contains(text(),'Email')]/..//input")
+
 choice_company_in_drop_down_list_of_companies_create_order_page = SiteObjects(
     "Выбор по ИНН компании в выпадающем списке компаний",
     "//div[@class='vz-new-autocomplete-list-item-description'][contains(text(), 'xxx')]")
+
+
+# Получатель юр. лицо
+btn_country_selection_flag_corp_recipient = SiteObjects(
+    "Кнопка выбора страны (флаг) у 'Юр.лицо' у получателя",
+    "//span[contains(., 'Получатель')]/..//span[@class='vz-select-dropdown-value-title']/..")
+
+btn_country_selection_flag_ru_corp_recipient = SiteObjects(
+    "Кнопка выбора страны Россия (флаг) у 'Юр.лицо' у получателя",
+    "//img[@src='/svg/vz-russia-flag.svg']/../ancestor::div[contains(@class, 'vz-select-dropdown-list-item')]")
+
+input_fio_corp_recipient = SiteObjects(
+    "Поле ФИО у получателя юр.лицо",
+    "//span[text()='Получатель']/../..//label[contains(text(),'ФИО')]/..//input")
+
+input_phone_corp_recipient = SiteObjects(
+    "Поле Телефон у получателя юр.лицо",
+    "//span[text()='Получатель']/../..//label[contains(text(),'Телефон')]/..//input")
+
+input_email_corp_recipient = SiteObjects(
+    "Поле ФИО у получателя юр.лицо",
+    "//span[text()='Получатель']/../..//label[contains(text(),'Email')]/..//input")
 
 
 """Блок Стоимость"""
@@ -404,7 +471,7 @@ btn_currency_change_button_in_the_cost_block = SiteObjects(
 
 btn_currency_change_ru_in_the_cost_block = SiteObjects(
     "Выбор валюты 'российский рубль' в блоке 'Стоимость' в 'Итого'",
-    "(//div['vz-select-dropdown-list-item']//img[@class='vz-icon-masked' and @src='/svg/vz-russia-flag.svg'])[3]")
+    "//div[@class='vz-select-dropdown-list vz-scroll open vz-order-total-price-cost-country-list']/div[contains(@class, 'vz-select-dropdown-list-item')]//img[@class='vz-icon-masked' and @src='/svg/vz-russia-flag.svg']")
 
 txt_the_payer_is_on_the_order_details_page = SiteObjects(
     "Текст 'Плательщиком является' на странице детализации заказа",
@@ -421,8 +488,6 @@ txt_currency_confirmation_header_in_the_currency_confirmation_popup = SiteObject
 btn_confirm_in_the_currency_confirmation_popup = SiteObjects(
     "Кнопка 'Подтвердить' в попапе 'Подтверждение валюты'",
     "//button[text()='Подтвердить']")
-
-
 
 
 

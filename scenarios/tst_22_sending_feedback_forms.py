@@ -3,7 +3,8 @@ import time
 from Business_Actions import *
 from Methods import *
 from pages.contacts_page import *
-
+from pages.list_of_orders_page import *
+from pages.contractors_page import *
 
 def sending_feedback_forms(params):
     main_description = "Тест №22 - Отправка форм обратной связи, претензии, оригиналов док-ов"
@@ -118,6 +119,16 @@ def sending_feedback_forms(params):
                 """Клик на кнопку 'Cоздать претензию' на форме обратной связи"""
                 find_el(params, btn_send_claim_popup_feedback.xpath)
                 click(params)
+
+                time.sleep(1)  # Нужно для появления элемента с ошибкой на странице, чтобы далее скачать страницу
+
+                page_content = params.page_source
+                something_went_wrong = "bottom error"
+
+                if something_went_wrong in page_content:
+                    check_text_attribute(params, text_notification_the_claim_has_been_registered.xpath, 'уже есть незакрытая претензия')
+                else:
+                    check_text_attribute(params, text_notification_the_claim_has_been_registered.xpath, 'претензия зарегистрирована')
 
                 # Отправляем статус успешности прогона теста
                 status, desc = tst_passed(True, description)

@@ -24,12 +24,17 @@ url_after_create_org = "order-sent"
 url_order_manage_org = "https://vozovoz.org/order/manage/"
 url_contractors_org = "https://vozovoz.org/personal/contractors/"
 url_contacts_org = "https://vozovoz.org/contacts/"
+url_tariffs_org = "https://vozovoz.org/tariffs/"
+
 
 url_base_ru = "https://vozovoz.ru/"
 url_base_ru_LK = "https://vozovoz.ru/personal/orders"
 url_base_ru_order_create = "https://vozovoz.ru/personal/order/create"
 url_contractors_ru = "https://vozovoz.ru/personal/contractors/"
 url_documents_ru = "https://vozovoz.ru/documents/"
+url_tariffs_ru = "https://vozovoz.ru/tariffs/"
+
+
 
 url_auk = "https://vozovoz.partners/"
 url_auk_login = "https://dev.vozovoz.partners/login"
@@ -764,14 +769,21 @@ checkbox_send_code_ind_recipient = SiteObjects("Поле email у отправи
 btn_type_corp = SiteObjects("Кнопка 'Юр.лицо' у отправителя",
                             "//span[text()='Отправитель']/../..//span[contains(text(),'Юридическое лицо')]/..")
 
+btn_type_corp_recipient = SiteObjects("Кнопка 'Юр.лицо' у отправителя",
+                            "//span[text()='Получатель']/../..//span[contains(text(),'Юридическое лицо')]/..")
+
 input_name_corp = SiteObjects("Инпут 'Наименование компании' у отправителя юр.лица",
                               "//span[text()='Отправитель']/../..//label[contains(text(),'Наименование компании')]/..//input")
+
+input_name_corp_recipient = SiteObjects("Инпут 'Наименование компании' у отправителя юр.лица",
+                              "//span[text()='Получатель']/../..//label[contains(text(),'Наименование компании')]/..//input")
 
 input_phone_corp = SiteObjects("Поле Телефон у отправителя юр.лицо",
                                "//span[text()='Отправитель']/../..//label[contains(text(),'Телефон')]/..//input")
 
-input_additional_phone_corp = SiteObjects("Кнопка доп. телефон у отправителя юр.лицо",
-                                          "//span[text()='Отправитель']/../..//label[contains(text(),'+ Доп. номер')]")
+input_additional_phone_corp = SiteObjects(
+    "Кнопка доп. телефон у отправителя юр.лицо",
+    "//span[text()='Отправитель']/../..//label[contains(text(),'+ Доп. номер')]")
 
 """Страница Контрагенты"""
 

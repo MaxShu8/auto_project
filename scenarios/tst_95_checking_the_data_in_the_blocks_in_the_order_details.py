@@ -518,8 +518,8 @@ def check_the_data_in_the_blocks_in_the_order_details(params):
                 status_and_name_tst[desc] = status
                 return status_and_name_tst
 
-        # status_and_name_tst = checking_the_data_in_the_order_details_t_t_phys_ka_phys_ka()
-        status_and_name_tst = checking_the_data_in_the_order_details_a_a_company_ka_company_ka()
+        status_and_name_tst = checking_the_data_in_the_order_details_t_t_phys_ka_phys_ka()
+        # status_and_name_tst = checking_the_data_in_the_order_details_a_a_company_ka_company_ka()
 
     finally:
         return main_description, status_and_name_tst, params.close(), params.quit()

@@ -52,7 +52,7 @@ def check_the_data_in_the_blocks_in_the_order_details(params):
                 data_dispatch_address_terminal = get_the_data_from_element(params, input_from_terminal_in_create_order_page.xpath)
                 data_date_send_terminal = get_the_data_from_element(params, btn_active_date_in_the_send_in_the_calendar.xpath)
                 data_date_send_terminal = extract_numbers(data_date_send_terminal)
-                data_time_send_terminal = get_the_data_from_element(params, btn_active_time_in_the_send.xpath)
+                data_time_send_terminal = get_the_data_from_element(params, input_time_from_dispatch_terminal_in_create_order_page.xpath)
 
                 # Вытащим данные из Прибытия
                 data_destination_city = get_the_data_from_element(params, input_destination_city.xpath, 1)
@@ -60,7 +60,7 @@ def check_the_data_in_the_blocks_in_the_order_details(params):
                 data_destination_address_terminal = get_the_data_from_element(params, input_to_terminal_in_create_order_page.xpath)
                 data_date_arrival_terminal = get_the_data_from_element(params, btn_active_date_in_the_arrival_in_the_calendar.xpath)
                 data_date_arrival_terminal = extract_numbers(data_date_arrival_terminal)
-                data_time_arrival_terminal = get_the_data_from_element(params, btn_active_time_in_the_arrival.xpath)
+                data_time_arrival_terminal = get_the_data_from_element(params, input_time_from_destination_in_create_order_page.xpath)
 
                 """Заполняем блок Груз - вкладка (Габариты)"""
                 # Заполняем "Общие габариты"

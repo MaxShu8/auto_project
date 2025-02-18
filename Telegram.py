@@ -1,4 +1,3 @@
-import datetime
 import os
 import random
 import string
@@ -6,6 +5,8 @@ import time
 import json
 from pages.contacts_page import *
 from Settings import *
+import datetime
+import Methods
 
 # a = '196140, Санкт-Петербург г, Шушары п, Пулковское тер., д. 106/1, корп. 106/1'.replace(',', '').split()
 # new = []
@@ -173,44 +174,49 @@ from Settings import *
 # rep2 = rep.replace('(', '').replace(')', '').replace('-', '').replace(' ', '')
 # print(rep2)
 
-domain = "dev"
-
-url_contractors_dev = f"https://vozovoz.{domain}/personal/contractors/"
-
-
-# week_day = datetime.datetime.today()
+# domain = "dev"
 #
-# print(week_day)
+# url_contractors_dev = f"https://vozovoz.{domain}/personal/contractors/"
+#
+# text = '07:00'
+# text_1 = '07:00'.split(':')
+# a = text[0]
+#
+# print(int(a))
+# from datetime import datetime, timedelta
 #
 #
-# with open('logs/logs_dadata.txt', 'a') as f:
-#     date_today = datetime.datetime.today()
-#     f.write(f"{week_day}\n")
-
-# week_day = datetime.datetime.today().weekday()
-# print(week_day)
-
-w = {"Проверка груза": True, "Проверка категории": False}
-
-
-failed_tsts = ["123", "456"]
-
-abc = "fff.dfdf/vozovoz/ds.rt/fkfn3124nvsvmn34"
-dfr = "vozovoz"
-
-a = ["Мешки, Мешок 55×105 см, 1 шт.", "Коробки, 2", "Сетки, черные"]
-b = ["Мешок 55×105 см", "Сетки", "черные"]
-
-
-a = [1, 2, 3, 4, 5, 6]
-b = [3, 6]
-
-# Проверка наличия всех элементов списка b в списке a
-all_elements_in_a = all(elem in a for elem in b)
-
-print(all_elements_in_a)
+# def add_up_the_time(time_a, time_b):
+#
+#     # Определяем начальное время
+#     start_time = datetime.strptime(time_a, "%H:%M").time()
+#
+#     # Определяем временной интервал, который хотим прибавить
+#     add_hours = time_b
+#
+#     # Создаём объект timedelta
+#     delta = timedelta(hours=add_hours)
+#
+#     # Сложение времени и временного интервала
+#     result_time = (datetime.combine(datetime.min, start_time) + delta).time()
+#
+#     # Преобразуем результат обратно в строку
+#     result_time_str = result_time.strftime("%H:%M")
+#
+#     print(result_time_str)
+#
+#
+# add_up_the_time("17:50", 5)
 
 
+def time_to_int(time_str):
+    hours, minutes = map(int, time_str.split(':'))
+    return hours * 60 + minutes
+
+
+a = "07:30"
+result = time_to_int(a)
+print(result)  # Вывод: 450
 
 
 

@@ -38,29 +38,79 @@ active_btn_dispatch_terminal_or_address = SiteObjects(
     "Кнопка 'Терминал' в отправке в создании заказа",
     "//div[contains(text(),'Отправка')]/../..//div[contains(@class, 'vz-switcher-item')]")
 
-input_timing_from_dispatch_in_create_order_page = SiteObjects(
-    "Инпут с выбором времени 'с' в отправке в создании заказа",
-    "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[1]")
+btn_calendar_in_dispatch_block = SiteObjects(
+    "Кнопка 'Календарь' в отправке в создании заказа",
+    "//div[text()='Отправка']/../..//span[text()='Календарь']")
 
-input_timing_to_dispatch_in_create_order_page = SiteObjects(
-    "Инпут с выбором времени 'с' в отправке в создании заказа",
-    "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[2]")
+text_in_calendar_in_dispatch_block = SiteObjects(
+    "Текст Пн в календаре в отправке в создании заказа",
+    "//div[text()='Отправка']/../..//span[text()='пн']")
+
+btn_in_calendar_day_selected_dispatch_block = SiteObjects(
+    "Кнопка текущей/выбранной даты в календаре в отправке в создании заказа",
+    "//div[text()='Отправка']/../..//div[contains(@class, 'day selected')]/span")
+
+btn_in_calendar_day_to_choice_dispatch_block = SiteObjects(
+    "Кнопка следующей активной даты в календаре в отправке в создании заказа",
+    "//div[text()='Отправка']/../..//div[@class='day']/span")
+
+# Дата
+choice_the_another_date_in_the_dispatch_calendar_in_create_order_page_x = SiteObjects(
+    "Дата в календаре в Отправка (заменяемый)",
+    "//div[text()='Отправка']/../../..//div[@class='day']/span[contains(text(), 'xxx')]")
+
+choice_the_active_date_in_the_sending_feed_in_create_order_page = SiteObjects(
+    "Активная дата в ленте в Отправка",
+    "//div[text()='Отправка']/../../..//div[contains(@class, 'vz-direction-calendar-calendar-slider-day active')]/div[1]/..")
+
+choice_the_another_date_in_the_sending_feed_in_create_order_page = SiteObjects(
+    "Другая дата в ленте в Отправка",
+    "//div[@class='vz-direction-calendar-calendar-slider-day']/div[1]")
+
+choice_the_another_date_in_the_sending_feed_in_create_order_page_x = SiteObjects(
+    "Неактивная дата в ленте в Отправка (заменяемый)",
+    "//div[text()='Отправка']/../../..//div[contains(@class, 'vz-direction-calendar-calendar-slider-day') and @data-text='xxx']")
 
 choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page = SiteObjects(
     "Выбор нас.пункта из выпадающего списка в Отправка (заменяемый)",
     "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item')]//div[contains(text(), 'xxx')]/..")
 
+# Время
+input_time_from_dispatch_terminal_in_create_order_page = SiteObjects(
+    "Время в 'Прибытие' в поле Время при отправке с терминала",
+    "//div[text()='Отправка']/../..//div[contains(text(), 'Время')]/..//span[text()='до']/..//div[contains(@class, 'vz-select-dropdown-value')]/span")
 
-choice_the_active_date_in_the_arrival_feed_in_create_order_page = SiteObjects(
-    "Активная дата в ленте в прибытии",
-    "(//div[contains(@class, 'vz-direction-calendar-calendar-slider-day active')]/div)[1]")
+input_time_from_dispatch_in_create_order_page = SiteObjects(
+    "Инпут с выбором времени 'с' в отправке в создании заказа",
+    "//div[text()='Отправка']/../..//div[contains(text(), 'Время')]/../..//span[text()='с']/..//div[contains(@class, 'vz-select-dropdown-value')]/span")
+
+input_time_to_dispatch_in_create_order_page = SiteObjects(
+    "Инпут с выбором времени 'до' в отправке в создании заказа",
+    "(//div[text()='Отправка']/../..//div[contains(text(), 'Время')]/../..//span[text()='до']/..//div[contains(@class, 'vz-select-dropdown-value')]/span)[2]")
+
+btn_choice_morning_time_in_dropdown_dispatch = SiteObjects(
+    "Утреннее время в 'Отправка' (первое)",
+    "//img[@class='vz-icon-masked'][@src='/svg/morning.svg']/../../span")
+
+btn_choice_last_morning_time_in_dropdown_dispatch = SiteObjects(
+    "Утреннее время в 'Отправка' (последнее)",
+    "(//img[@class='vz-icon-masked'][@src='/svg/morning.svg']/../../span)[last()]")
+
+btn_choice_evening_time_in_dropdown_dispatch = SiteObjects(
+    "Вечернее время в 'Отправка' (последний элемент)",
+    "(//img[@class='vz-icon-masked'][@src='/svg/evening.svg']/../../span)[last()]")
+
+btn_choice_default_time_in_dropdown_dispatch = SiteObjects(
+    "Дефолтное время в 'Отправка'",
+    "//div[contains(@class, 'vz-select-dropdown-list-item')]//span")
+
+btn_choice_default_time_in_dropdown_dispatch_x = SiteObjects(
+    "Дефолтное время в 'Отправка' (заменяемый)",
+    "//div[contains(@class, 'vz-select-dropdown-list-item')]//span[contains(text(), 'xxx')]")
 
 
+"""Прибытие"""
 
-
-
-
-# Прибытие
 input_timing_from_destination_in_create_order_page = SiteObjects(
     "Инпут с выбором времени 'с' в прибытии в создании заказа",
     "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[3]")
@@ -89,6 +139,32 @@ btn_destination_terminal = SiteObjects(
     "Кнопка 'Терминал' в прибытии в создании заказа",
     "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Терминал')]/..")
 
+btn_calendar_in_destination_block = SiteObjects(
+    "Кнопка 'Календарь' в прибытии в создании заказа",
+    "//div[text()='Прибытие']/../../..//span[text()='Календарь']")
+
+text_in_calendar_in_destination_block = SiteObjects(
+    "Текст Пн в календаре в прибытии в создании заказа",
+    "//div[text()='Прибытие']/../../..//span[text()='пн']")
+
+btn_in_calendar_day_selected_destination_block = SiteObjects(
+    "Кнопка текущей/выбранной даты в календаре в прибытии в создании заказа",
+    "//div[text()='Прибытие']/../../..//div[contains(@class, 'day selected')]/span")
+
+btn_in_calendar_day_to_choice_destination_block = SiteObjects(
+    "Кнопка следующей активной даты в календаре в прибытии в создании заказа",
+    "//div[text()='Прибытие']/../../..//div[@class='day']/span")
+
+btn_in_calendar_day_to_choice_with_status_destination_block = SiteObjects(
+    "Кнопка следующей активной даты (со статусом) в календаре в прибытии в создании заказа",
+    "//div[text()='Прибытие']/../../..//div[@class='day discount']/span")
+
+
+# Дата
+choice_the_another_date_in_the_destination_calendar_in_create_order_page_x = SiteObjects(
+    "Дата в календаре в Отправка (заменяемый)",
+    "//div[text()='Прибытие']/../../..//div[@class='day']/span[contains(text(), 'xxx')]")
+
 btn_active_date_in_the_send_in_the_calendar = SiteObjects(
     "Активная дата в 'Отправка' в календаре",
     "(//div[contains(@class, 'vz-direction-calendar-calendar-slider')]/div[contains(@class, 'active')])[1]")
@@ -97,13 +173,27 @@ btn_active_date_in_the_arrival_in_the_calendar = SiteObjects(
     "Активная дата в 'Прибытие' в календаре",
     "(//div[contains(@class, 'vz-direction-calendar-calendar-slider')]/div[contains(@class, 'active')])[2]")
 
-btn_active_time_in_the_send = SiteObjects(
-    "Активное время в 'Отправка' в поле Время",
-    "(//div[contains(text(), 'Время')]/..//div[contains(@class, 'vz-select-dropdown-value big')]/span)[1]")
 
-btn_active_time_in_the_arrival = SiteObjects(
+# Время
+input_time_from_destination_in_create_order_page = SiteObjects(
     "Активное время в 'Прибытие' в поле Время",
-    "(//div[contains(text(), 'Время')]/..//div[contains(@class, 'vz-select-dropdown-value big')]/span)[2]")
+    "(//div[text()='Прибытие']/../../..//div[contains(text(), 'Время')]/..//span[text()='с']/..//div[contains(@class, 'vz-select-dropdown-value')]/span)[1]")
+
+input_time_destination_in_create_order_page = SiteObjects(
+    "Активное время в 'Прибытие' в поле Время",
+    "(//div[text()='Прибытие']/../../..//div[contains(text(), 'Время')]/..//span[text()='с']/..//div[contains(@class, 'vz-select-dropdown-value')]/span)[2]")
+
+btn_choice_morning_time_in_dropdown_destination = SiteObjects(
+    "Утреннее время в 'Прибытие'",
+    "//img[@class='vz-icon-masked'][@src='/svg/morning.svg']/../../span")
+
+checkbox_fixed_time_dispatch_in_create_order_page = SiteObjects(
+    "Чек-бокс 'Фиксированное время' в отправке при создании заказа",
+    "(//div[contains(text(), 'Фиксированное')]/../div)[1]")
+
+checkbox_fixed_time_destination_in_create_order_page = SiteObjects(
+    "Чек-бокс 'Фиксированное время' в прибытии при создании заказа",
+    "//div[text()='Прибытие']/../../..//div[contains(text(), 'Фиксированное')]/../div")
 
 
 # Выбор времени ожидания
@@ -119,13 +209,27 @@ btn_waiting_time_dispatch_2_hours = SiteObjects(
     "Кнопка '2 часа' в списке времени ожидания в создании заказа",
     "//div[@class='vz-select-dropdown-list vz-scroll open']//span[contains(text(), '2 часа')]")
 
-checkbox_fixed_time_dispatch_in_create_order_page = SiteObjects(
-    "Чек-бокс 'Фиксированное время' в отправке при создании заказа",
-    "(//div[contains(text(), 'Фиксированное')]/..//input[@type='checkbox'])[1]")
 
-checkbox_fixed_time_destination_in_create_order_page = SiteObjects(
-    "Чек-бокс 'Фиксированное время' в прибытии при создании заказа",
-    "//div[text()='Прибытие']/../../..//div[contains(text(), 'Фиксированное')]/../div")
+# Выбор даты (Лента/Календарь)
+choice_the_active_date_in_the_arrival_feed_in_create_order_page = SiteObjects(
+    "Активная дата в ленте в прибытии",
+    "//div[text()='Прибытие']/../../..//div[contains(@class, 'vz-direction-calendar-calendar-slider-day active')]/div[1]")
+
+choice_the_another_date_in_the_arrival_feed_in_create_order_page = SiteObjects(
+    "Другая дата (без статуса) в ленте в прибытии",
+    "//div[text()='Прибытие']/../../..//div[@class='vz-direction-calendar-calendar-slider-day']/div[1]")
+
+choice_the_another_date_with_status_in_the_arrival_feed_in_create_order_page = SiteObjects(
+    "Другая дата (со статусом) в ленте в прибытии",
+    "//div[text()='Прибытие']/../../..//div[@class='vz-direction-calendar-calendar-slider-day discount']/div[1]")
+
+choice_the_another_date_disabled_in_the_arrival_feed_in_create_order_page = SiteObjects(
+    "Неактивная дата в ленте в прибытии",
+    "//div[text()='Прибытие']/../../..//div[@class='vz-direction-calendar-calendar-slider-day disabled']/div[1]")
+
+choice_the_another_date_in_the_arrival_feed_in_create_order_page_x = SiteObjects(
+    "Неактивная дата в ленте в прибытии (заменяемый)",
+    "//div[text()='Прибытие']/../../..//div[contains(@class, 'vz-direction-calendar-calendar-slider-day') and @data-text='xxx']")
 
 
 """Блок Груз"""
@@ -441,6 +545,25 @@ input_email_corp_recipient = SiteObjects(
 
 
 """Блок Стоимость"""
+# Услуги
+text_morning_pick_up_service_in_the_cost_block = SiteObjects(
+    "Услуга Утренний забор в блоке Стоимость",
+    "//div[contains(@class, 'vz-order-total-price')]//span[contains(@title, 'Утренний забор')]")
+
+text_evening_pick_up_service_in_the_cost_block = SiteObjects(
+    "Услуга Вечерний забор в блоке Стоимость",
+    "//div[contains(@class, 'vz-order-total-price')]//span[contains(@title, 'Вечерний забор')]")
+
+text_fixed_time_service_from_in_the_cost_block = SiteObjects(
+    "Услуга Фиксированное время забора в блоке Стоимость",
+    "//div[contains(@class, 'vz-order-total-price')]//span[contains(@title, 'Фиксированное время забора')]")
+
+text_fixed_time_service_to_in_the_cost_block = SiteObjects(
+    "Услуга Фиксированное время отвоза в блоке Стоимость",
+    "//div[contains(@class, 'vz-order-total-price')]//span[contains(@title, 'Фиксированное время доставки')]")
+
+
+# Валюты
 displaying_the_currency_tenge_in_the_cost_block = SiteObjects(
     "Отображение валюты тенге в блоке 'Стоимость'",
     "(//div[@class='vz-personal-order-total-card-item'])[1]//span[contains(text(), 'тенге')]")

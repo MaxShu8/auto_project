@@ -8,6 +8,7 @@ from site_objects import *
 import various_data
 from various_data import *
 from pages.order_create_page import *
+from datetime import datetime, timedelta
 
 
 current_element = None
@@ -258,6 +259,21 @@ def find_els(params, xpath):
         raise Exception(send_message_tg(err, token, chat_id))
 
 
+def invisibility_of_element(params, xpath):
+
+    try:
+        params.implicitly_wait(5)
+        WebDriverWait(params, element_time_out).until(ec.invisibility_of_element_located((By.XPATH, xpath)))
+
+    except WebDriverException as e:
+        err = f"\nОшибка: {e}\nМетод: invisibility_of_element"
+        raise WebDriverException(send_message_tg(err, token, chat_id))
+
+    except Exception as e:
+        err = f"\nНеизвестная ошибка\nМетод: invisibility_of_element"
+        raise Exception(send_message_tg(err, token, chat_id))
+
+
 def url_contain_url(params, url):
 
     try:
@@ -423,6 +439,9 @@ def get_the_data_from_element(params, xpath, what_to_get=0):
     elif what_to_get == 2:
         including_class = a.get_attribute('class')
         return including_class
+    elif what_to_get == 3:
+        including_data = a.get_attribute('data-date')
+        return including_data
     else:
         a.find_element(By.XPATH, xpath)
         including_text = a.text  # выгружает текст
@@ -452,6 +471,7 @@ def get_the_data_from_block_of_elements(params, xpath, what_to_get=0):
 
 def extract_numbers(string_value):
     """Функция возвращает числа из строкового значения."""
+
     current_number = ""
     counter = 0
 
@@ -475,7 +495,7 @@ def waiting_for_the_order_to_be_visible_to_the_user(params, number):
         time.sleep(8)
         page_content = params.page_source
         counter += 1
-        if counter > 8:
+        if counter > 10:
             break
 
 def enable_element(params, xpath, timeout=30):
@@ -498,4 +518,58 @@ def exist_elements_of_list_in_list(list_a, list_b):
 
     except Exception:
         pass
+
+
+def extract_time_from_block_direction(value):
+    """Принимает значение времени в формате 2025-02-12T07:00:00 и возвращает время в формате 07:00"""
+
+    time_num = value.split('T')
+    a = (time_num[1])[:5]
+    return a
+
+# Убрать после прогона тестов!
+# def extract_time_from_block_direction(value):
+#     """Принимает значение времени в формате '07:00' и возвращает часы в int"""
+#
+#     time_num = value.split(':')
+#     a = int(time_num[0])
+#     return a
+
+
+def add_up_the_time(time_a, time_b, summation=True):
+    """Сложение(для утреннего времени) или вычитание(для вечернего)"""
+
+    # Определяем начальное время
+    start_time = datetime.strptime(time_a, "%H:%M").time()
+
+    if type(time_b) is not int:
+        time_b = time_to_int(time_b)
+
+    # Создаём объект timedelta
+    delta = timedelta(hours=time_b)
+    delta_add = timedelta(hours=0, minutes=30)
+
+    # Сложение/вычитание времени и временного интервала
+    if summation is True:
+        result_time = (datetime.combine(datetime.min, start_time) + delta).time()
+
+        # Преобразуем результат обратно в строку
+        result_time_str = result_time.strftime("%H:%M")
+
+        return result_time_str
+
+    else:
+        result_time = (datetime.combine(datetime.min, start_time) - delta).time()
+
+        # Преобразуем результат обратно в строку
+        result_time_str = result_time.strftime("%H:%M")
+
+        return result_time_str
+
+
+def time_to_int(time_str):
+    hours, minutes = map(int, time_str.split(':'))
+    return hours + minutes/60
+
+
 

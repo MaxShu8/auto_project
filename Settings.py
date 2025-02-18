@@ -66,7 +66,7 @@ def send_message_tg(msg, token, chat_id):
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     requests.post(url, headers=headers, data=body)
-    return msg
+
 
 def send_photo_tg(params, token, chat_id,  desc=''):
 

@@ -638,7 +638,7 @@ btn_new_order = SiteObjects("Кнопка 'Оформить заказ'",
                             "//a[@href='/personal/order/create/']")
 
 text_placing_an_order = SiteObjects("Текст 'Расчет и оформление заказа'",
-                                    "//h1[contains(text(), 'Расчет и оформление заказа')]")
+                                    "//h1[contains(text(), 'Калькулятор доставки груза')]")
 
 input_dispatch_city = SiteObjects("Инпут 'НП отправления' в создании заказа",
                                   "//div[contains(text(),'Отправка')]/ancestor::div[@class='vz-direction-card']/div[2]//input[@class='vz-input-control big']")

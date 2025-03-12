@@ -4,6 +4,7 @@ from various_data import *
 
 """Элементы страницы \"Заказы\" """
 
+# Поле поиска заказа
 input_number_of_order_on_orders_page = SiteObjects(
     "Поле 'Номер заказа' на странице 'Заказы'",
     "//input[@placeholder='Номер заказа']")
@@ -32,12 +33,39 @@ skeleton_of_order_on_orders_page = SiteObjects(
     "Скелетон на заказах на странице 'Заказы'",
     "//div[@class='vz-orders-skeleton']")
 
+# Кнопка расширенного поиска
+btn_advanced_search_button_on_orders_page = SiteObjects(
+    "Кнопка 'Расширенный поиск' на странице заказа",
+    "//div[@class='vz-icon mdi mdi- vz-personal-orders-toolbar-search-icon']")
+
+input_select_the_status_on_orders_page = SiteObjects(
+    "Поле 'Выберите статус' на странице 'Заказы'",
+    "//span[contains(text(), 'Выберите статус')]")
+
+checkbox_select_the_request_status_on_orders_page = SiteObjects(
+    "Поле 'Выберите статус' на странице 'Заказы'",
+    "//span[contains(text(), 'Заявка')]")
+
+checkbox_select_the_issued_status_on_orders_page = SiteObjects(
+    "Поле 'Выберите статус' на странице 'Заказы'",
+    "//span[contains(text(), 'Выдан')]")
+
+btn_apply_button_in_advanced_search_popup_on_orders_page = SiteObjects(
+    "Кнопка 'Применить' в попапе Расширенный поиск на странице заказа",
+    "//span[contains(., 'Применить')]")
+
+
 # Вкладки (Все В пути и т.д.)
 tab_unpaid_in_the_list_of_orders_on_orders_page = SiteObjects(
     "Вкладка 'Неоплаченные' в списке заказов",
     "//div[contains(@class, 'vz-tabs-list-tab')]/span[contains(., 'Неоплаченные')]")
 
+
 # Элементы на заказе
+elm_order_card_in_the_order_list_page = SiteObjects(
+    "Карточка заказа в списке заказов",
+    "//div[contains(@class, 'vz-card ')]/div[contains(@class, 'vz-order-item')]")
+
 btn_cancel_order_button_in_the_order_list_page = SiteObjects(
     "Кнопка 'Отменить заказ' у заказа в списке заказов",
     "//div[@class='text-overflow text-body'][contains(text(), 'xxx')]/../../../..//button[@title='Отменить заказ']")
@@ -53,6 +81,13 @@ text_order_number_in_the_order_block_on_orders_page_2 = SiteObjects(
 text_order_status_in_the_order_block_on_orders_page_x = SiteObjects(
     "Статус заказа в блоке заказа на странице 'Заказы' (заменяемый)",
     "//div[contains(., 'xxx')]/..//label[contains(., 'Отменён')]")
+
+
+# Документы на печать у заказа
+btn_order_form_in_the_order_list_page = SiteObjects(
+    "Кнопка 'Бланк заказа' у заказа в списке заказов",
+    "//button[@title='Бланк заказа']")
+
 
 
 

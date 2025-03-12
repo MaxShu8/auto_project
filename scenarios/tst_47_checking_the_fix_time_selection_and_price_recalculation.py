@@ -1,6 +1,5 @@
 from Business_Actions import *
 from Methods import *
-from pages import order_create_page
 
 
 def get_data_of_date_order(dispatch, destination, active_date, type_cargo_pickup):

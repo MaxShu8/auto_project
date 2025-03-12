@@ -24,6 +24,8 @@ from scenarios.tst_61_setting_the_cargo_category import checking_the_category_se
 from scenarios.tst_64_checking_the_indication_of_all_types_of_insurance import checking_the_indication_of_all_types_of_insurance
 from scenarios.tst_78_checking_the_order_search_field import checking_input_search_number_order
 from scenarios.tst_87_cancellation_of_order import cancellation_of_order
+from scenarios.tst_88_check_create_order_based_on_exist_order import check_create_order_based_on_exist_order
+from scenarios.tst_90_checking_the_printing_of_the_marking_sheets_on_prod import check_printing_of_documents_for_order_on_prod
 from scenarios.tst_95_checking_the_data_in_the_blocks_in_the_order_details import check_the_data_in_the_blocks_in_the_order_details
 from scenarios.tst_103_creating_an_individual_ka import check_creating_an_individual_ka
 from scenarios.tst_104_creating_legal_entity_ka import check_creating_legal_entity_ka
@@ -35,7 +37,8 @@ from scenarios.tst_118_creating_claim_individual_and_legal_entity import creatin
 
 def running_for_debug():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
-    tests = [check_cargo_tracking]
+
+    tests = [check_printing_of_documents_for_order_on_prod]
 
     success_counter = 0
     failed_tsts = []
@@ -76,6 +79,7 @@ def running_for_debug():
 
 def running_of_all():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
+
     tests = [check_authorization_mobile,
              check_authorization_email,
              check_data_transfer_from_mini_calculator,
@@ -95,6 +99,8 @@ def running_of_all():
              checking_the_indication_of_all_types_of_insurance,
              checking_input_search_number_order,
              cancellation_of_order,
+             check_create_order_based_on_exist_order,
+             check_printing_of_documents_for_order_on_prod,
              check_the_data_in_the_blocks_in_the_order_details,
              check_creating_an_individual_ka,
              check_creating_legal_entity_ka,
@@ -124,7 +130,7 @@ def running_of_all():
                 msg = f"{failed_counter}.🚫 - {name_test}\n"
                 failed_tsts.append(msg)
 
-    statistic_msg = f"☑️ Автотестов пройдено: {success_counter} из {success_counter + failed_counter}\nОбщее время: {sum_duration} сек."
+    statistic_msg = f"☑️ Автотестов пройдено: {success_counter} из {success_counter + failed_counter}\nОбщее время: {round(sum_duration, 1)} сек."
 
     # Проверим, есть ли упавшие тесты, и если да, то добавим эту информацию в статистику
     if failed_counter > 0:

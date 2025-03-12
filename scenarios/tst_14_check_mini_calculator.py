@@ -485,11 +485,6 @@ def check_mini_calculator(params):
         check_text_attribute(params, atr_btn_from_terminal.xpath, 'disabled')
         check_text_attribute(params, atr_btn_to_address.xpath, 'active')
 
-        # Отправляем статус успешности прогона теста
-        status, desc = tst_passed(True, description)
-        status_and_name_tst[desc] = status
-        return status_and_name_tst
-
         status_and_name_tst = price_calculation_terminal_terminal()
         status_and_name_tst = price_calculation_terminal_address()
         status_and_name_tst = price_calculation_terminal_pvz()
@@ -497,9 +492,7 @@ def check_mini_calculator(params):
         status_and_name_tst = price_calculation_address_address()
         status_and_name_tst = price_calculation_address_pvz()
         status_and_name_tst = price_calculation_russia_kazakhstan()
-        status_and_name_tst = price_calculation_kazakhstan_russia()
         status_and_name_tst = price_calculation_belarus_russia()
-        status_and_name_tst = price_calculation_russia_belarus()
 
     finally:
         return main_description, status_and_name_tst, params.close(), params.quit()

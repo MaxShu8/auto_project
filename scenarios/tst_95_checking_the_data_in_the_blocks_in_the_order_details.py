@@ -205,9 +205,9 @@ def check_the_data_in_the_blocks_in_the_order_details(params):
                 check_text_attribute(params, data_destination_time_of_delivery_in_details_page.xpath, data_time_arrival_terminal)
 
                 # Данные блока "Груз" - Общие габариты
-                check_text_attribute(params, data_volume_in_the_total_dimensions_of_the_cargo_in_details_page.xpath, data_volume, False, True)
-                check_text_attribute(params, data_weight_in_the_total_dimensions_of_the_cargo_in_details_page.xpath, data_weight, False, True)
-                check_text_attribute(params, data_places_in_the_total_dimensions_of_the_cargo_in_details_page.xpath, f"{str(int(data_places) + 2)}")
+                check_text_attribute(params, data_volume_in_the_total_dimensions_of_the_cargo_in_details_page.xpath, data_volume, False, True, "text")
+                check_text_attribute(params, data_weight_in_the_total_dimensions_of_the_cargo_in_details_page.xpath, data_weight, False, True, "text")
+                check_text_attribute(params, data_places_in_the_total_dimensions_of_the_cargo_in_details_page.xpath, f"{str(int(data_places) + 2)}", "text")
 
                 # Данные блока "Груз" - Максимальные габариты одного места
                 # check_text_attribute(params, data_length_in_the_maximum_seat_dimensions_in_details_page.xpath, data_length_max_place)

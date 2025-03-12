@@ -77,7 +77,7 @@ choice_us_item_from_drop_down_list_in_dispatch_in_create_order_page = SiteObject
 
 # Время
 input_time_from_dispatch_terminal_in_create_order_page = SiteObjects(
-    "Время в 'Прибытие' в поле Время при отправке с терминала",
+    "Время в 'Отправка' в поле Время при отправке с терминала",
     "//div[text()='Отправка']/../..//div[contains(text(), 'Время')]/..//span[text()='до']/..//div[contains(@class, 'vz-select-dropdown-value')]/span")
 
 input_time_from_dispatch_in_create_order_page = SiteObjects(
@@ -233,6 +233,19 @@ choice_the_another_date_in_the_arrival_feed_in_create_order_page_x = SiteObjects
 
 
 """Блок Груз"""
+# Общие габариты одного груза
+input_value_places_in_order_create_page = SiteObjects(
+    "Поле 'Места' в создании заказа",
+    "//label[contains(text(),'Мест')]/..//input")
+
+input_value_volume_in_order_create_page = SiteObjects(
+    "Поле 'Объем' в создании заказа",
+    "//label[contains(text(),'Объем')]/..//input")
+
+input_value_weight_in_order_create_page = SiteObjects(
+    "Поле 'Вес' в создании заказа",
+    "(//span[contains(text(),'Вес')]/..//input)[1]")
+
 # Максимальные габариты одного груза
 inp_length_field_in_the_maximum_dimensions_of_one_place_create_order_page = SiteObjects(
     "Поле 'Длина' в Максимальные габариты одного места на странице 'Расчет и оформление заказа'",
@@ -280,6 +293,10 @@ txt_type_of_insurance_create_order_page = SiteObjects(
 
 
 # Категория груза
+data_selected_cargo_category_in_create_order_page = SiteObjects(
+    "Выбранная 'Категория груза' на странице 'Расчет и оформление заказа'",
+    "//div[@class='vue-treeselect__single-value']//span")
+
 inp_cargo_category_in_calculation_and_ordering_page = SiteObjects(
     "Поле 'Категория груза' на странице 'Расчет и оформление заказа'",
     "//input[@class='vue-treeselect__input']")
@@ -329,6 +346,10 @@ checkbox_palletizing_in_the_modal_type_of_packaging_create_order_page = SiteObje
 checkbox_palletizing_at_the_pick_up_terminal_in_the_modal_type_of_packaging_create_order_page = SiteObjects(
     "Чек-бокс 'Паллетирование на терминале выдачи' в модалке Вид упаковки",
     "//span[text()='Паллетирование на терминале выдачи']")
+
+data_cargo_package_in_the_cargo_block_in_create_order_page = SiteObjects(
+    "Данные - упаковка груза в блоке Груз",
+    "//div[@class='vz-individual-order-cargo-wrapping']//div[@class='vz-individual-order-cargo-card vz-cargo-wrapping-card']//input")
 
 
 # Доп. упаковка
@@ -424,6 +445,19 @@ btn_terminal_in_the_additional_services_section_in_create_order_form = SiteObjec
     "Кнопка 'Терминал' в блоке Доп.услуги при оформлении заказа",
     "//span[contains(text(), 'Вернуть сопроводительные документы')]/../../../..//span[contains(text(), 'Терминал')]")
 
+# Проверка активности чек-боксов
+check_checkbox_scan_of_the_delivery_invoice_in_the_add_on_block_services_create_order_page = SiteObjects(
+    "Чек-бокс 'Скан накладной на выдачу' в блоке доп.услуги",
+    "//span[contains(text(), 'Скан накладной на выдачу')]/..")
+
+check_checkbox_return_the_accompanying_documents_in_the_add_on_block_services_create_order_page = SiteObjects(
+    "Чек-бокс 'Вернуть сопроводительные документы' в блоке доп.услуги",
+    "//span[contains(text(), 'Вернуть сопроводительные документы')]/..")
+
+check_checkbox_disassembly_of_packaging_upon_delivery_to_the_address_on_block_services_create_order_page = SiteObjects(
+    "Чек-бокс 'Разбор упаковки при доставке до адреса' в блоке доп.услуги",
+    "//span[contains(text(), 'Разбор упаковки при доставке до адреса')]/..")
+
 
 """Блок Плательщик"""
 btn_the_sender_button_in_the_payer_block = SiteObjects(
@@ -433,6 +467,15 @@ btn_the_sender_button_in_the_payer_block = SiteObjects(
 btn_recipient_in_the_payer_block_in_create_order_form = SiteObjects(
     "Кнопка 'Получатель' в блоке Плательщик при оформлении заказа",
     "//div[contains(@class, 'vz-switcher-item')]/span[contains(text(), 'Получатель')]")
+
+# Проверка блока "Плательщик"
+check_the_sender_button_in_the_payer_block = SiteObjects(
+    "Кнопка 'Отправитель' в блоке 'Плательщик'",
+    "//div[contains(@class, 'vz-switcher-item')]/span[contains(text(), 'Отправитель')]/..")
+
+check_btn_recipient_in_the_payer_block_in_create_order_form = SiteObjects(
+    "Кнопка 'Получатель' в блоке Плательщик при оформлении заказа",
+    "//div[contains(@class, 'vz-switcher-item')]/span[contains(text(), 'Получатель')]/..")
 
 
 """Блок Участники"""

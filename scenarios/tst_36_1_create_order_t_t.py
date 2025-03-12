@@ -12,7 +12,7 @@ def create_order_t_t(params):
     try:
         """1. Проверка создания заявки из терминала в терминал"""
         def create_order_terminal_terminal():
-            description = "Проверка выбора категории"
+            description = "Проверка создания заявки из терминала в терминал"
 
             try:
                 authorization_lk(params, url_base_org, individual_phone_full, passw)

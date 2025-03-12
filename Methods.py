@@ -122,6 +122,7 @@ def wait_tobe_clickable(params, xpath):
         raise Exception(send_message_tg(err, token, chat_id))
     # return a
 
+
 def wait_to_be_clickable(params):
     wait_tobe_clickable(params, site_object)
 
@@ -316,7 +317,7 @@ def find_number_order(params):
         send_message_tg(err_short, token, group_id_predprod)
 
 
-def check_text_attribute(params, xpath, value, pass_exception=False, check_range=False):
+def check_text_attribute(params, xpath, value, pass_exception=False, check_range=False, setting="value"):
     """"""
     try:
         move_to_element(params, xpath)
@@ -363,13 +364,22 @@ def check_text_attribute(params, xpath, value, pass_exception=False, check_range
             list_figures.append(round((new_value - 0.1), 1))
             list_figures.append(round((new_value + 0.1), 1))
 
-            if any(str(item) in including_text for item in list_figures):
-                pass
-            else:
-                if pass_exception is True:
-                    return False
+            if setting == "value":
+                if any(str(item) in f"{including_value}" for item in list_figures):
+                    pass
                 else:
-                    raise Exception
+                    if pass_exception is True:
+                        return False
+                    else:
+                        raise Exception
+            else:
+                if any(str(item) in f"{including_text}" for item in list_figures):
+                    pass
+                else:
+                    if pass_exception is True:
+                        return False
+                    else:
+                        raise Exception
 
     except Exception:
         err = f"Значение атрибута: {value} - не соответствует ожидаемому"
@@ -542,7 +552,7 @@ def add_up_the_time(time_a, time_b, summation=True):
     # Определяем начальное время
     start_time = datetime.strptime(time_a, "%H:%M").time()
 
-    if type(time_b) is not int:
+    if type(time_b) is str:
         time_b = time_to_int(time_b)
 
     # Создаём объект timedelta
@@ -570,6 +580,19 @@ def add_up_the_time(time_a, time_b, summation=True):
 def time_to_int(time_str):
     hours, minutes = map(int, time_str.split(':'))
     return hours + minutes/60
+
+
+def extract_part_url(params, need_part="orderGuid"):
+    """Вернуть часть url, например, orderGuid"""
+
+    full_url = params.current_url
+
+    if need_part == "orderGuid":
+        need_part_url = (full_url.split("order/")[1]).strip("/")
+        return need_part_url
+    else:
+        pass
+
 
 
 

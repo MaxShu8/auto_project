@@ -30,6 +30,7 @@ url_tariffs_org = "https://vozovoz.org/tariffs/"
 url_base_ru = "https://vozovoz.ru/"
 url_base_ru_LK = "https://vozovoz.ru/personal/orders"
 url_base_ru_order_create = "https://vozovoz.ru/personal/order/create"
+url_order_list_ru = "https://vozovoz.ru/personal/orders/onward/"
 url_contractors_ru = "https://vozovoz.ru/personal/contractors/"
 url_documents_ru = "https://vozovoz.ru/documents/"
 url_tariffs_ru = "https://vozovoz.ru/tariffs/"
@@ -64,9 +65,7 @@ class SiteObjects:
         self.xpath = self.copy_xpath
 
 
-
 """Окно авторизации/регистрации"""
-
 btn_personal_area = SiteObjects(
             "Кнопка \"Личный Кабинет\" на главной в публичке",
             "(//div[@class='flex flex-align-items-center ml-auto']//div[@class='public-header-button-personal-text text-overflow'][contains(text(),'Личный кабинет')]//..//..)[1]")

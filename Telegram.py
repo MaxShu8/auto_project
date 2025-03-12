@@ -208,15 +208,10 @@ import Methods
 #
 # add_up_the_time("17:50", 5)
 
+abc = "abc"
 
-def time_to_int(time_str):
-    hours, minutes = map(int, time_str.split(':'))
-    return hours * 60 + minutes
+print(type(type(abc)))
 
-
-a = "07:30"
-result = time_to_int(a)
-print(result)  # Вывод: 450
 
 
 

@@ -55,8 +55,47 @@ input_login_on_auth_page = SiteObjects(
             "//input[@placeholder='Телефон или E-mail*']")
 
 
-
 """Main Page (Header)"""
+
+btn_choice_city_on_main_page = SiteObjects(
+    "Кнопка выбора города",
+    "(//span[@class='vz-button-title'])[1]")
+
+text_choice_city_on_main_page = SiteObjects(
+    "Кнопка выбора города",
+    "//span[@title='Выберите ваш город']")
+
+btn_close_choice_city_on_main_page = SiteObjects(
+    "Кнопка закрытия окна с выбором города",
+    "//span[@class='mdi mdi-close']")
+
+btn_choice_color_theme_on_main_page = SiteObjects(
+    "Кнопка выбора темы оформления",
+    "//div[contains(@class, 'vz-color-mode vz-cursor-pointer')]")
+
+attribute_choice_dark_theme_on_main_page = SiteObjects(
+    "Признак темной темы",
+    "//html[@class='dark']")
+
+btn_calculate_on_main_page = SiteObjects(
+    "Кнопка 'Рассчитать' в хедере",
+    "(//span[contains(text(), 'Рассчитать')]//ancestor::a[@class='public-header-control-link'])[1]")
+
+btn_track_button_on_main_page = SiteObjects(
+    "Кнопка 'Отследить' в хедере",
+    "(//span[contains(text(), 'Отследить')]//ancestor::a[contains(@class, 'public-header-control-link')])[1]")
+
+text_track_page_on_main_page = SiteObjects(
+    "Текст 'Введите номер заказа' на странице 'Управление заказом'",
+    "//h2[contains(text(), 'Введите номер заказа')]")
+
+btn_contacts_button_on_main_page = SiteObjects(
+    "Кнопка 'Контакты' в хедере",
+    "(//span[contains(text(), 'Контакты')]//ancestor::a[@href='/contacts/'])[1]")
+
+text_contacts_page_on_main_page = SiteObjects(
+    "Текст 'Контакты' на странице 'Контакты'",
+    "//h1[contains(text(), 'Контакты')]")
 
 
 """Main Page (Menu)"""
@@ -165,10 +204,6 @@ btn_header_directions = SiteObjects("Кнопка Грузоперевозки",
 
 text_on_directions = SiteObjects("Текст на странице Грузоперевозки",
                                  "//div[@class='directions-most-popular mt-60 mb-60']//h2[contains(text(), 'направления')]")
-
-
-
-
 
 btn_header_info = SiteObjects("Кнопка Информация в хедере",
                               "//div[@class='public-header-menu-collapse-item-title'][contains(text(), 'Услуги')]")

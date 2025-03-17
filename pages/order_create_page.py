@@ -232,7 +232,32 @@ choice_the_another_date_in_the_arrival_feed_in_create_order_page_x = SiteObjects
     "//div[text()='Прибытие']/../../..//div[contains(@class, 'vz-direction-calendar-calendar-slider-day') and @data-text='xxx']")
 
 
+
+"""Блок Забор/Отвоз груза"""
+# Забор
+checkbox_cargo_loading_on_block_services_create_order_page = SiteObjects(
+    "Чекбокс 'Погрузочные работы' в блоке Забор",
+    "//span[contains(text(), 'Погрузочные работы')]/..")
+
+
+# Отвоз
+checkbox_cargo_unloading_on_block_services_create_order_page = SiteObjects(
+    "Чекбокс 'Разгрузочные работы' в блоке Отвоз",
+    "//span[contains(text(), 'Разгрузочные работы')]/..")
+
+
 """Блок Груз"""
+# Груз/Корреспонденция
+
+checkbox_cargo_in_cargo_block_in_order_create_page = SiteObjects(
+    "Чекбокс 'Груз' в блоке Груз в создании заказа",
+    "//span[contains(., 'Груз') and (@class='vz-checkbox-label')]/..")
+
+checkbox_correspondence_in_cargo_block_in_order_create_page = SiteObjects(
+    "Чекбокс 'Корреспонденция' в блоке Груз в создании заказа",
+    "//span[contains(., 'Корреспонденция') and (@class='vz-checkbox-label')]/..")
+
+
 # Общие габариты одного груза
 input_value_places_in_order_create_page = SiteObjects(
     "Поле 'Места' в создании заказа",
@@ -589,6 +614,22 @@ input_email_corp_recipient = SiteObjects(
 
 """Блок Стоимость"""
 # Услуги
+text_service_loading_operations_in_the_cost_block = SiteObjects(
+    "Услуга ПРР отправитель в блоке Стоимость",
+    "//span[contains(@title, 'Погрузо-разгрузочные работы (отправитель)')]")
+
+price_service_loading_operations_in_the_cost_block = SiteObjects(
+    "Услуга ПРР отправитель в блоке Стоимость",
+    "//span[contains(@title, 'Погрузо-разгрузочные работы (отправитель)')]/../span[2]")
+
+text_service_uploading_operations_in_the_cost_block = SiteObjects(
+    "Услуга ПРР получатель в блоке Стоимость",
+    "//span[contains(@title, 'Погрузо-разгрузочные работы (получатель)')]")
+
+price_service_uploading_operations_in_the_cost_block = SiteObjects(
+    "Услуга ПРР получатель в блоке Стоимость",
+    "//span[contains(@title, 'Погрузо-разгрузочные работы (получатель)')]/../span[2]")
+
 text_morning_pick_up_service_in_the_cost_block = SiteObjects(
     "Услуга Утренний забор в блоке Стоимость",
     "//div[contains(@class, 'vz-order-total-price')]//span[contains(@title, 'Утренний забор')]")

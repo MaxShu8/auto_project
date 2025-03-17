@@ -261,6 +261,7 @@ def find_els(params, xpath):
 
 
 def invisibility_of_element(params, xpath):
+    """Ждать до тех пор, пока элемент не исчезнет"""
 
     try:
         params.implicitly_wait(5)
@@ -594,5 +595,25 @@ def extract_part_url(params, need_part="orderGuid"):
         pass
 
 
+def compare_numbers(figure_a, figure_b, operation="equal"):
+    """Функция для сравнения двух чисел. Создана для проверки стоимостей по услугам в блоке Стоимость"""
+
+    if operation == "more":
+        if figure_a > figure_b:
+            return True
+        else:
+            raise Exception
+
+    elif operation == "less":
+        if figure_a < figure_b:
+            return True
+        else:
+            raise Exception
+
+    else:
+        if figure_a == figure_b:
+            return True
+        else:
+            raise Exception
 
 

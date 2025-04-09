@@ -7,16 +7,18 @@ def check_mini_calculator(params):
     status_and_name_tst = {}
 
     try:
-        # Главная страница
-        set_page(params, url_base_org)
-        wait_page(params, url_base_org)
-        price_to_load(params)
 
         """1. Расчет цены: терминал-терминал"""
-        def price_calculation_terminal_terminal():
-            description = "14.1 - Расчет цены: терминал-терминал (ТК VZ-T1)"
+        def price_calculation_address_terminal_pvz():
 
             try:
+                description = "14.1 - Расчет цены: терминал-терминал"
+
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
+                price_to_load(params)
+
+                """Проверка расчета цены"""
                 # Ищем поле Откуда и устанавливаем там город
                 find_el(params, input_from_mini.xpath)
                 click(params)
@@ -47,25 +49,9 @@ def check_mini_calculator(params):
 
                 check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')  # проверим нажата ли кнопка
 
-                # Отправляем статус успешности прогона теста
-                status, desc = tst_passed(True, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
+                """14.2 - Расчет цены: терминал-адрес"""
+                description = "14.2 - Расчет цены: терминал-адрес"
 
-            except Exception:
-                # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
-
-                # Отправляем статус о не успешности прогона теста
-                status, desc = tst_passed(False, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
-
-        """2. Расчет цены: терминал-адрес"""
-        def price_calculation_terminal_address():
-            description = "14.2 - Расчет цены: терминал-адрес (ТК VZ-T2)"
-
-            try:
                 find_el(params, btn_from_address.xpath)
                 click(params)
 
@@ -74,25 +60,9 @@ def check_mini_calculator(params):
                 check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # проверим нажата ли кнопка
                 check_price(params, currency_rub)
 
-                # Отправляем статус успешности прогона теста
-                status, desc = tst_passed(True, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
+                """14.3 - Расчет цены: терминал-пвз"""
+                description = "14.3 - Расчет цены: терминал-пвз"
 
-            except Exception:
-                # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
-
-                # Отправляем статус о не успешности прогона теста
-                status, desc = tst_passed(False, description)
-                status_and_name_tst[desc] = status
-            return status_and_name_tst
-
-        """3. Расчет цены: терминал-пвз"""
-        def price_calculation_terminal_pvz():
-            description = "14.3 - Расчет цены: терминал-пвз (ТК VZ-T3)"
-
-            try:
                 find_el(params, btn_to_pvz.xpath)
                 click(params)
 
@@ -101,25 +71,9 @@ def check_mini_calculator(params):
                 check_text_attribute(params, atr_btn_to_pvz.xpath, 'active')  # проверим нажата ли кнопка
                 check_price(params, currency_rub)
 
-                # Отправляем статус успешности прогона теста
-                status, desc = tst_passed(True, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
+                """14.4 - Расчет цены: адрес-терминал"""
+                description = "14.4 - Расчет цены: адрес-терминал"
 
-            except Exception:
-                # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
-
-                # Отправляем статус о не успешности прогона теста
-                status, desc = tst_passed(False, description)
-                status_and_name_tst[desc] = status
-            return status_and_name_tst
-
-        """4. Расчет цены: адрес-терминал"""
-        def price_calculation_address_terminal():
-            description = "14.4 - Расчет цены: адрес-терминал (ТК VZ-T4)"
-
-            try:
                 find_el(params, btn_from_address.xpath)
                 click(params)
                 price_to_load(params)
@@ -133,25 +87,9 @@ def check_mini_calculator(params):
                 check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')  # проверим нажата ли кнопка
                 check_price(params, currency_rub)
 
-                # Отправляем статус успешности прогона теста
-                status, desc = tst_passed(True, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
+                """14.5 - Расчет цены: адрес-адрес"""
+                description = "14.5 - Расчет цены: адрес-адрес"
 
-            except Exception:
-                # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
-
-                # Отправляем статус о не успешности прогона теста
-                status, desc = tst_passed(False, description)
-                status_and_name_tst[desc] = status
-            return status_and_name_tst
-
-        """5. Расчет цены: адрес-адрес"""
-        def price_calculation_address_address():
-            description = "14.5 - Расчет цены: адрес-адрес (ТК VZ-T5)"
-
-            try:
                 find_el(params, btn_to_address.xpath)
                 click(params)
                 price_to_load(params)
@@ -159,25 +97,9 @@ def check_mini_calculator(params):
                 check_text_attribute(params, atr_btn_to_address.xpath, 'active')  # проверим нажата ли кнопка
                 check_price(params, currency_rub)
 
-                # Отправляем статус успешности прогона теста
-                status, desc = tst_passed(True, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
+                """14.6 - Расчет цены: адрес-пвз"""
+                description = "14.6 - Расчет цены: адрес-пвз"
 
-            except Exception:
-                # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
-
-                # Отправляем статус о не успешности прогона теста
-                status, desc = tst_passed(False, description)
-                status_and_name_tst[desc] = status
-            return status_and_name_tst
-
-        """6. Расчет цены: адрес-пвз"""
-        def price_calculation_address_pvz():
-            description = "14.6 - Расчет цены: адрес-пвз (ТК VZ-T6)"
-
-            try:
                 find_el(params, btn_to_pvz.xpath)
                 click(params)
                 price_to_load(params)
@@ -197,13 +119,15 @@ def check_mini_calculator(params):
                 # Отправляем статус о не успешности прогона теста
                 status, desc = tst_passed(False, description)
                 status_and_name_tst[desc] = status
-            return status_and_name_tst
+                return status_and_name_tst
 
-        """7. Расчет цены: Россия-Казахстан, Казахстан-Россия"""
-        def price_calculation_russia_kazakhstan():
-            description = "14.7 - Расчет цены: Россия-Казахстан (ТК VZ-T7)"
+        """2. Расчет цены: Россия-Казахстан, Казахстан-Россия, Россия-Беларусь, Беларусь-Россия"""
+        def price_calculation_russia_kazakhstan_belarus():
 
             try:
+                """Россия-Казахстан"""
+                description = "14.7 - Расчет цены: Россия-Казахстан и наоборот"
+
                 set_page(params, url_base_org)
                 wait_page(params, url_base_org)
                 price_to_load(params)
@@ -229,25 +153,9 @@ def check_mini_calculator(params):
                 check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')
                 check_price(params, currency_kzt)
 
-                # Отправляем статус успешности прогона теста
-                status, desc = tst_passed(True, description)
-                status_and_name_tst[desc] = status
-                return status_and_name_tst
+                """Россия-Беларусь"""
+                description = "14.8 - Расчет цены: Россия-Беларусь и наоборот"
 
-            except Exception:
-                # Если какая-то ошибка - значит отправляем соответствующий статус
-                send_photo_tg(params, token, chat_id, desc=description)
-
-                # Отправляем статус о не успешности прогона теста
-                status, desc = tst_passed(False, description)
-                status_and_name_tst[desc] = status
-            return status_and_name_tst
-
-        """8. Расчет цены: Беларусь-Россия, Россия-Беларусь"""
-        def price_calculation_belarus_russia():
-            description = "14.9 - Расчет цены: Беларусь-Россия, Россия-Беларусь (ТК VZ-T9)"
-
-            try:
                 find_el(params, input_from_mini.xpath)
                 click(params)
                 set_dispatch_city(params, city_by)
@@ -296,203 +204,279 @@ def check_mini_calculator(params):
                 status_and_name_tst[desc] = status
             return status_and_name_tst
 
-        """9. Смена одной зарубежной валюты на другую при перевозке Казахстан - Беларусь"""
-        description = "14.12 - Смена одной зарубежной валюты на другую при перевозке Казахстан - Беларусь (ТК VZ-T26)"
+        """3. Смена одной зарубежной валюты на другую при перевозке Казахстан - Беларусь"""
+        def exchange_currency_kazakhstan_belarus():
 
-        find_el(params, input_from_mini.xpath)
-        click(params)
-        set_dispatch_city(params, city_kz1)
+            try:
+                description = "Смена одной зарубежной валюты на другую при перевозке Казахстан - Беларусь"
 
-        price_to_load(params)
-        check_price(params, currency_kzt)
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
+                price_to_load(params)
 
-        find_el(params, btn_currency_mini_ber.xpath)
-        click(params)
+                find_el(params, input_from_mini.xpath)
+                click(params)
+                set_dispatch_city(params, city_by)
 
-        price_to_load(params)
-        check_price(params, currency_ber)
+                price_to_load(params)
 
-        find_el(params, btn_currency_mini_rub.xpath)
-        click(params)
+                find_el(params, input_to_mini.xpath)
+                click(params)
+                set_dispatch_city(params, city_kz1)
 
-        price_to_load(params)
-        check_price(params, currency_rub)
+                price_to_load(params)
+                check_price(params, currency_kzt)
 
-        """Тест 14.13"""
-        description = "14.13 - Проверка расчета перевозки при одинаковом населенном пункте: - от терминала до терминал"
+                find_el(params, btn_currency_mini_ber.xpath)
+                click(params)
 
-        set_page(params, url_base_org)
-        wait_page(params, url_base_org)
-        price_to_load(params)
+                price_to_load(params)
+                check_price(params, currency_ber)
 
-        """Тест 14.14"""
-        description = "14.14 - Проверка расчета перевозки при одинаковом населенном пункте: - от терминала до адреса"
+                find_el(params, btn_currency_mini_rub.xpath)
+                click(params)
 
-        find_el(params, input_to_mini.xpath)
-        click(params)
-        set_destination_city(params, city_ru3)
+                price_to_load(params)
+                check_price(params, currency_rub)
 
-        price_to_load(params)
+                # Отправляем статус успешности прогона теста
+                status, desc = tst_passed(True, description)
+                status_and_name_tst[desc] = status
+                return status_and_name_tst
 
-        find_el(params, btn_to_address.xpath)
-        click(params)
+            except Exception:
+                # Если какая-то ошибка - значит отправляем соответствующий статус
+                send_photo_tg(params, token, chat_id, desc=description)
 
-        price_to_load(params)
-        check_text_attribute(params, atr_btn_to_address.xpath, 'active')  # проверим нажата ли кнопка
+                # Отправляем статус о не успешности прогона теста
+                status, desc = tst_passed(False, description)
+                status_and_name_tst[desc] = status
+            return status_and_name_tst
 
-        find_el(params, input_from_mini.xpath)
-        click(params)
-        set_dispatch_city(params, city_ru3)
+        """4. Проверка расчета перевозки при одинаковом населенном пункте"""
+        def checking_the_transportation_calculation_for_the_same_locality():
 
-        price_to_load(params)
+            try:
+                """1."""
+                description = "Проверка расчета перевозки при одинаковом населенном пункте: от терминала до адреса"
 
-        check_text_attribute(params, atr_btn_from_terminal.xpath, 'active')
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
+                price_to_load(params)
 
-        """Тест 14.16"""
-        description = "14.16 - Проверка расчета перевозки при одинаковом населенном пункте: - от адреса до терминала"
+                find_el(params, input_to_mini.xpath)
+                click(params)
+                set_destination_city(params, city_ru3)
 
-        find_el(params, btn_change_city.xpath)
-        click(params)
-        price_to_load(params)
+                price_to_load(params)
 
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # вместо ПВЗ в Откуда будет кнопка Адрес
-        check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')
+                find_el(params, btn_to_address.xpath)
+                click(params)
 
-        """Тест 14.17"""
-        description = "14.17 - Проверка расчета перевозки при одинаковом населенном пункте: - от адреса до адреса"
+                price_to_load(params)
+                check_text_attribute(params, atr_btn_to_address.xpath, 'active')  # проверим нажата ли кнопка
 
-        find_el(params, btn_to_address.xpath)
-        click(params)
+                find_el(params, input_from_mini.xpath)
+                click(params)
+                set_dispatch_city(params, city_ru3)
 
-        price_to_load(params)
+                price_to_load(params)
 
-        check_text_attribute(params, atr_btn_to_address.xpath, 'active')
+                check_text_attribute(params, atr_btn_from_terminal.xpath, 'active')
 
-        """Тест 14.15"""
-        description = "14.15 - Проверка расчета перевозки при одинаковом населенном пункте: - от терминала до ПВЗ"
+                find_el(params, btn_change_city.xpath)
+                click(params)
+                price_to_load(params)
 
-        find_el(params, input_from_mini.xpath)
-        click(params)
-        set_dispatch_city(params, city_to)
+                check_text_attribute(params, atr_btn_from_address.xpath,
+                                     'active')  # вместо ПВЗ в Откуда будет кнопка Адрес
+                check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')
 
-        price_to_load(params)
+                """2"""
+                description = "Проверка расчета перевозки при одинаковом населенном пункте: - от адреса до адреса"
 
-        find_el(params, btn_from_terminal.xpath)
-        click(params)
+                find_el(params, btn_to_address.xpath)
+                click(params)
 
-        price_to_load(params)
-        check_text_attribute(params, atr_btn_from_terminal.xpath, 'active')  # проверим нажата ли кнопка
+                price_to_load(params)
 
-        find_el(params, input_to_mini.xpath)
-        click(params)
-        set_destination_city(params, city_to)
+                check_text_attribute(params, atr_btn_to_address.xpath, 'active')
 
-        price_to_load(params)
+                """3"""
+                description = "Проверка расчета перевозки при одинаковом населенном пункте: - от терминала до ПВЗ"
 
-        find_el(params, btn_to_pvz.xpath)
-        click(params)
+                find_el(params, input_from_mini.xpath)
+                click(params)
+                set_dispatch_city(params, city_to)
 
-        price_to_load(params)
-        check_text_attribute(params, atr_btn_to_pvz.xpath, 'active')  # проверим нажата ли кнопка
+                price_to_load(params)
 
-        """Тест 14.18"""
-        description = "14.18 - Проверка расчета перевозки при одинаковом населенном пункте: - от адреса до ПВЗ"
+                find_el(params, btn_from_terminal.xpath)
+                click(params)
 
-        find_el(params, btn_from_address.xpath)
-        click(params)
+                price_to_load(params)
+                check_text_attribute(params, atr_btn_from_terminal.xpath, 'active')  # проверим нажата ли кнопка
 
-        price_to_load(params)
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # проверим нажата ли кнопка
+                find_el(params, input_to_mini.xpath)
+                click(params)
+                set_destination_city(params, city_to)
 
-        """Тест 14.22"""
-        description = "14.22 - Проверка кнопки 'Поменять местами нас. пункты' - от терминала до ПВЗ"
+                price_to_load(params)
 
-        set_page(params, url_base_org)
-        wait_page(params, url_base_org)
-        price_to_load(params)
+                find_el(params, btn_to_pvz.xpath)
+                click(params)
 
-        #  Ищем поле Куда и устанавливаем там город
-        find_el(params, input_to_mini.xpath)
-        click(params)
-        set_destination_city(params, city_to)
+                price_to_load(params)
+                check_text_attribute(params, atr_btn_to_pvz.xpath, 'active')  # проверим нажата ли кнопка
 
-        price_to_load(params)
+                """4"""
+                description = "Проверка расчета перевозки при одинаковом населенном пункте: - от адреса до ПВЗ"
 
-        find_el(params, btn_to_pvz.xpath)
-        click(params)
+                find_el(params, btn_from_address.xpath)
+                click(params)
 
-        price_to_load(params)
+                price_to_load(params)
+                check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # проверим нажата ли кнопка
 
-        check_text_attribute(params, atr_btn_to_pvz.xpath, 'active')  # проверим нажата ли кнопка
+                # Отправляем статус успешности прогона теста
+                status, desc = tst_passed(True, description)
+                status_and_name_tst[desc] = status
+                return status_and_name_tst
 
-        find_el(params, btn_change_city.xpath)
-        click(params)
-        price_to_load(params)
+            except Exception:
+                # Если какая-то ошибка - значит отправляем соответствующий статус
+                send_photo_tg(params, token, chat_id, desc=description)
 
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # вместо ПВЗ в Откуда будет кнопка Адрес
-        check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')
+                # Отправляем статус о не успешности прогона теста
+                status, desc = tst_passed(False, description)
+                status_and_name_tst[desc] = status
+            return status_and_name_tst
 
-        """Тест 14.23"""
-        description = "14.23 - Проверка кнопки 'Поменять местами нас. пункты' - от адреса до терминала"
+        """5. Проверка кнопки 'Поменять местами нас. пункты'"""
+        def checking_the_swap_cities_button():
 
-        find_el(params, btn_change_city.xpath)  # до нажатия: Адрес --> Терминал
-        click(params)
-        price_to_load(params)
+            try:
+                """1"""
+                description = "Проверка кнопки 'Поменять местами нас. пункты' - от терминала до ПВЗ"
 
-        check_text_attribute(params, atr_btn_from_terminal.xpath, 'active')
-        check_text_attribute(params, atr_btn_to_address.xpath, 'active')
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
+                price_to_load(params)
 
-        """Тест 14.24"""
-        description = "14.24 - Проверка кнопки 'Поменять местами нас. пункты' - от адреса до адреса"
+                #  Ищем поле Куда и устанавливаем там город
+                find_el(params, input_to_mini.xpath)
+                click(params)
+                set_destination_city(params, city_to)
 
-        find_el(params, btn_from_address.xpath)
-        click(params)
-        price_to_load(params)
+                price_to_load(params)
 
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # проверим нажата ли кнопка
+                find_el(params, btn_to_pvz.xpath)
+                click(params)
 
-        find_el(params, btn_change_city.xpath)  # до нажатия: Адрес --> Адрес
-        click(params)
-        price_to_load(params)
+                price_to_load(params)
 
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')
-        check_text_attribute(params, atr_btn_to_address.xpath, 'active')
+                check_text_attribute(params, atr_btn_to_pvz.xpath, 'active')  # проверим нажата ли кнопка
 
-        """Тест 14.25"""
-        description = "14.25 - Проверка, что кнопка 'до терминала' у нас.пункта в 'Куда', где нет терминала - неактивна"
+                find_el(params, btn_change_city.xpath)
+                click(params)
+                price_to_load(params)
 
-        #  Ищем поле Куда и устанавливаем там город
-        find_el(params, input_to_mini.xpath)
-        click(params)
-        set_destination_city(params, city_by1)
+                check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # вместо ПВЗ в Откуда будет кнопка Адрес
+                check_text_attribute(params, atr_btn_to_terminal.xpath, 'active')
 
-        price_to_load(params)
+                """2"""
+                description = "Проверка кнопки 'Поменять местами нас. пункты' - от адреса до терминала"
 
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')
-        check_text_attribute(params, atr_btn_to_address.xpath, 'active')
-        check_text_attribute(params, atr_btn_to_terminal.xpath, 'disabled')
+                find_el(params, btn_change_city.xpath)  # до нажатия: Адрес --> Терминал
+                click(params)
+                price_to_load(params)
 
-        """Тест 14.26"""
-        description = "14.26 - Проверка, что кнопка 'от терминала' у нас.пункта в 'Откуда', где нет терминала - неактивна"
+                check_text_attribute(params, atr_btn_from_terminal.xpath, 'active')
+                check_text_attribute(params, atr_btn_to_address.xpath, 'active')
 
-        find_el(params, btn_change_city.xpath)
-        click(params)
-        price_to_load(params)
+                """3"""
+                description = "Проверка кнопки 'Поменять местами нас. пункты' - от адреса до адреса"
 
-        price_to_load(params)
+                find_el(params, btn_from_address.xpath)
+                click(params)
+                price_to_load(params)
 
-        check_text_attribute(params, atr_btn_from_address.xpath, 'active')
-        check_text_attribute(params, atr_btn_from_terminal.xpath, 'disabled')
-        check_text_attribute(params, atr_btn_to_address.xpath, 'active')
+                check_text_attribute(params, atr_btn_from_address.xpath, 'active')  # проверим нажата ли кнопка
 
-        status_and_name_tst = price_calculation_terminal_terminal()
-        status_and_name_tst = price_calculation_terminal_address()
-        status_and_name_tst = price_calculation_terminal_pvz()
-        status_and_name_tst = price_calculation_address_terminal()
-        status_and_name_tst = price_calculation_address_address()
-        status_and_name_tst = price_calculation_address_pvz()
-        status_and_name_tst = price_calculation_russia_kazakhstan()
-        status_and_name_tst = price_calculation_belarus_russia()
+                find_el(params, btn_change_city.xpath)  # до нажатия: Адрес --> Адрес
+                click(params)
+                price_to_load(params)
+
+                check_text_attribute(params, atr_btn_from_address.xpath, 'active')
+                check_text_attribute(params, atr_btn_to_address.xpath, 'active')
+
+                # Отправляем статус успешности прогона теста
+                status, desc = tst_passed(True, description)
+                status_and_name_tst[desc] = status
+                return status_and_name_tst
+
+            except Exception:
+                # Если какая-то ошибка - значит отправляем соответствующий статус
+                send_photo_tg(params, token, chat_id, desc=description)
+
+                # Отправляем статус о не успешности прогона теста
+                status, desc = tst_passed(False, description)
+                status_and_name_tst[desc] = status
+            return status_and_name_tst
+
+        """6. Проверка неактивности кнопок: терминал/адрес"""
+        def checking_button_inactivity_terminal_address():
+
+            try:
+                """Нективность кнопки терминал в Куда"""
+                description = "14.25 - Проверка, что кнопка 'до терминала' у нас.пункта в 'Куда', где нет терминала - неактивна"
+
+                set_page(params, url_base_org)
+                wait_page(params, url_base_org)
+                price_to_load(params)
+
+                #  Ищем поле Куда и устанавливаем там город
+                find_el(params, input_to_mini.xpath)
+                click(params)
+                set_destination_city(params, city_by1)
+
+                price_to_load(params)
+
+                check_text_attribute(params, atr_btn_to_address.xpath, 'active')
+                check_text_attribute(params, atr_btn_to_terminal.xpath, 'disabled')
+
+                """Нективность кнопки терминал в Откуда"""
+                description = "14.25 - Проверка, что кнопка 'до терминала' у нас.пункта в 'Куда', где нет терминала - неактивна"
+
+                find_el(params, btn_change_city.xpath)
+                click(params)
+                price_to_load(params)
+
+                price_to_load(params)
+
+                check_text_attribute(params, atr_btn_from_address.xpath, 'active')
+                check_text_attribute(params, atr_btn_from_terminal.xpath, 'disabled')
+
+                # Отправляем статус успешности прогона теста
+                status, desc = tst_passed(True, description)
+                status_and_name_tst[desc] = status
+                return status_and_name_tst
+
+            except Exception:
+                # Если какая-то ошибка - значит отправляем соответствующий статус
+                send_photo_tg(params, token, chat_id, desc=description)
+
+                # Отправляем статус о не успешности прогона теста
+                status, desc = tst_passed(False, description)
+                status_and_name_tst[desc] = status
+            return status_and_name_tst
+
+        status_and_name_tst = price_calculation_address_terminal_pvz()
+        status_and_name_tst = price_calculation_russia_kazakhstan_belarus()
+        status_and_name_tst = checking_the_transportation_calculation_for_the_same_locality()
+        status_and_name_tst = exchange_currency_kazakhstan_belarus()
+        status_and_name_tst = checking_the_swap_cities_button()
+        status_and_name_tst = checking_button_inactivity_terminal_address()
 
     finally:
         return main_description, status_and_name_tst, params.close(), params.quit()

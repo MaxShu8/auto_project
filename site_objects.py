@@ -25,6 +25,7 @@ url_order_manage_org = "https://vozovoz.org/order/manage/"
 url_contractors_org = "https://vozovoz.org/personal/contractors/"
 url_contacts_org = "https://vozovoz.org/contacts/"
 url_tariffs_org = "https://vozovoz.org/tariffs/"
+url_feedback_form_org = "https://vozovoz.org/address/moskva/"
 
 
 url_base_ru = "https://vozovoz.ru/"
@@ -666,8 +667,9 @@ input_destination_city = SiteObjects("Инпут 'НП прибытия' в со
 input_destination_address = SiteObjects("Инпут 'Адрес прибытия' в создании заказа",
                                         "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Улица, дом']")
 
-input_destination_pvz = SiteObjects("Инпут 'Пункт выдачи' в создании заказа",
-                                        "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Введите улицу для поиска']")
+input_destination_pvz = SiteObjects(
+    "Инпут 'Пункт выдачи' в создании заказа",
+    "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Введите улицу для поиска']")
 
 btn_destination_address = SiteObjects("Кнопка 'Адрес' в прибытии в создании заказа",
                                       "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]")

@@ -28,6 +28,7 @@ from scenarios.tst_87_cancellation_of_order import cancellation_of_order
 from scenarios.tst_88_check_create_order_based_on_exist_order import check_create_order_based_on_exist_order
 from scenarios.tst_90_checking_the_printing_of_the_marking_sheets_on_prod import check_printing_of_documents_for_order_on_prod
 from scenarios.tst_95_checking_the_data_in_the_blocks_in_the_order_details import check_the_data_in_the_blocks_in_the_order_details
+from scenarios.tst_102_create_template_individual_order_and_in_retail_chains import tst_102_checking_order_addition_to_the_template
 from scenarios.tst_103_creating_an_individual_ka import check_creating_an_individual_ka
 from scenarios.tst_104_creating_legal_entity_ka import check_creating_legal_entity_ka
 from scenarios.tst_105_check_input_search_ka import check_input_search_individual_and_legal_entity_ka
@@ -39,7 +40,7 @@ from scenarios.tst_118_creating_claim_individual_and_legal_entity import creatin
 def running_for_debug():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
 
-    tests = [checking_loading_operations_service]
+    tests = [check_mini_calculator]
 
     success_counter = 0
     failed_tsts = []
@@ -81,8 +82,10 @@ def running_for_debug():
 def running_of_all():
     """Названия новых тестов добавлять в список tests для прогона очередью"""
 
-    tests = [check_authorization_mobile,
+    tests = [
+             check_authorization_mobile,
              check_authorization_email,
+             check_mini_calculator,
              check_data_transfer_from_mini_calculator,
              check_cargo_tracking,
              sending_feedback_forms,
@@ -104,12 +107,14 @@ def running_of_all():
              check_create_order_based_on_exist_order,
              check_printing_of_documents_for_order_on_prod,
              check_the_data_in_the_blocks_in_the_order_details,
+             tst_102_checking_order_addition_to_the_template,
              check_creating_an_individual_ka,
              check_creating_legal_entity_ka,
              check_input_search_individual_and_legal_entity_ka,
              hiding_the_payer,
              checking_the_addition_of_contacts_to_the_ka_card,
-             creating_claim_individual_and_legal_entity_in_the_ka_card]
+             creating_claim_individual_and_legal_entity_in_the_ka_card
+             ]
 
     success_counter = 0
     failed_tsts = []

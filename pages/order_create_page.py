@@ -18,6 +18,14 @@ skeleton_after_push_the_btn_create_order = SiteObjects(
 
 """Блок Направление"""
 # Отправка
+input_dispatch_city_in_create_order_page = SiteObjects(
+    "Инпут 'НП отправления' в создании заказа",
+    "//div[contains(text(),'Отправка')]/ancestor::div[@class='vz-direction-card']/div[2]//input[@class='vz-input-control big']")
+
+input_destination_city_in_create_order_page = SiteObjects(
+    "Инпут 'НП отправления' в создании заказа",
+    "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']/div[2]//input[@class='vz-input-control big']")
+
 input_from_terminal_in_create_order_page = SiteObjects(
     "Инпут с адресом терминала (от) в создании заказа",
     "(//div[contains(text(), 'Отправка')]/../..//label[contains(text(), 'Терминал')]/..//span)[1]")
@@ -25,6 +33,14 @@ input_from_terminal_in_create_order_page = SiteObjects(
 input_to_terminal_in_create_order_page = SiteObjects(
     "Инпут с адресом терминала (до) в создании заказа",
     "(//div[contains(text(), 'Прибытие')]/../..//label[contains(text(), 'Терминал')]/..//span)[1]")
+
+input_dispatch_address_in_create_order_page = SiteObjects(
+    "Инпут 'Адрес отправления' в создании заказа",
+    "//div[contains(text(),'Отправка')]/../..//input[@placeholder='Улица, дом']")
+
+input_destination_pvz_in_create_order_page = SiteObjects(
+    "Инпут 'Пункт выдачи' в создании заказа",
+    "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Введите улицу для поиска']")
 
 btn_dispatch_address = SiteObjects(
     "Кнопка 'Адрес' в отправке в создании заказа",
@@ -110,30 +126,40 @@ btn_choice_default_time_in_dropdown_dispatch_x = SiteObjects(
 
 
 """Прибытие"""
+input_destination_pvz_in_create_order_page = SiteObjects(
+    "Инпут 'Пункт выдачи' в создании заказа",
+    "//div[contains(text(),'Прибытие')]/../..//input[@placeholder='Введите улицу для поиска']")
 
-input_timing_from_destination_in_create_order_page = SiteObjects(
-    "Инпут с выбором времени 'с' в прибытии в создании заказа",
-    "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[3]")
-
-input_timing_to_destination_in_create_order_page = SiteObjects(
-    "Инпут с выбором времени 'с' в прибытии в создании заказа",
-    "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[4]")
 
 choice_pvz_point_in_destination_in_create_order_page = SiteObjects(
     "Выбор пункта ПВЗ в прибытии в создании заказа (заменяемый)",
     "//div[text()='xxx']")
 
+
 choice_us_item_from_drop_down_list_in_destination_in_create_order_page = SiteObjects(
     "Выбор нас.пункта из выпадающего списка в Отправка (заменяемый)",
     "//div[contains(@class, 'vz-new-autocomplete-list vz-scroll vz-new-autocomplete-list')]//div[contains(@class, 'vz-new-autocomplete-list-item')]//div[contains(text(), 'xxx')]/..")
+
+
+input_timing_from_destination_in_create_order_page = SiteObjects(
+    "Инпут с выбором времени 'с' в прибытии в создании заказа",
+    "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[3]")
+
+
+input_timing_to_destination_in_create_order_page = SiteObjects(
+    "Инпут с выбором времени 'с' в прибытии в создании заказа",
+    "(//span[text()='с']/..//span[contains(@class, 'vz-select-dropdown-value-title')])[4]")
+
 
 active_btn_destination_terminal_or_address = SiteObjects(
     "Кнопка 'Терминал' в прибытии в создании заказа",
     "//div[contains(text(),'Прибытие')]/../..//div[contains(@class, 'vz-switcher-item')]")
 
+
 btn_destination_address = SiteObjects(
     "Кнопка 'Адрес' в прибытии в создании заказа",
     "//div[contains(text(),'Прибытие')]/ancestor::div[@class='vz-direction-card']//span[contains(text(),'Адрес')]/..")
+
 
 btn_destination_terminal = SiteObjects(
     "Кнопка 'Терминал' в прибытии в создании заказа",
@@ -348,6 +374,10 @@ icn_rigid_packaging_icon_in_calculation_and_ordering_page = SiteObjects(
 
 
 # Упаковка
+data_packing_information_template_page = SiteObjects(
+    "Данные по упаковке на странице Шаблоны",
+    "//div[@class='vz-individual-order-cargo-card-content']//input")
+
 btn_add_button_packaging_create_order_page = SiteObjects(
     "Кнопка 'Добавить' (упаковку) при оформлении заказа",
     "//div[contains(text(), 'Упаковка')]/..//span")
@@ -451,6 +481,10 @@ inp_amount_field_in_the_insurance_in_create_order_form = SiteObjects(
 inp_field_is_your_transportation_number_in_create_order_form = SiteObjects(
     "Поле 'Ваш номер перевозки' при оформлении заказа",
     "//textarea[@placeholder='Номер перевозки']")
+
+inp_field_is_your_transportation_number_in_template_page = SiteObjects(
+    "Поле 'Ваш номер перевозки' при оформлении заказа",
+    "//input[@placeholder='Номер перевозки']")
 
 
 """Блок Доп.услуги"""

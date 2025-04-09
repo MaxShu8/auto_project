@@ -15,6 +15,10 @@ btn_cancel_order_on_in_details_page = SiteObjects(
     "Кнопка 'Отменить заказ' в детализации заказа",
     "//span[contains(text(), 'Отменить заказ')]")
 
+btn_add_to_template_on_in_details_page = SiteObjects(
+    "Кнопка 'Добавить в шаблон' в детализации заказа",
+    "//button[contains(@class, 'vz-order-header-button') and (@title='Добавить в шаблон')]")
+
 
 """Блок Направление"""
 

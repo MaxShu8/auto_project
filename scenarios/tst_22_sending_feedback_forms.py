@@ -17,8 +17,8 @@ def sending_feedback_forms(params):
 
             try:
                 """Переходим на страницу контактов"""
-                set_page(params, url_contacts_org)
-                wait_page(params, url_contacts_org)
+                set_page(params, url_feedback_form_org)
+                wait_page(params, url_feedback_form_org)
 
                 """Кликаем на 'Я ваш клиент - есть вопрос'"""
                 find_el(params, btn_i_am_your_client_documents_page.xpath)
@@ -71,8 +71,8 @@ def sending_feedback_forms(params):
 
             try:
                 """Переходим на страницу контактов"""
-                set_page(params, url_contacts_org)
-                wait_page(params, url_contacts_org)
+                set_page(params, url_feedback_form_org)
+                wait_page(params, url_feedback_form_org)
 
                 """Кликаем на 'Я ваш клиент - есть вопрос'"""
                 find_el(params, btn_i_am_your_client_documents_page.xpath)
@@ -150,8 +150,8 @@ def sending_feedback_forms(params):
 
             try:
                 """Переходим на страницу контактов"""
-                set_page(params, url_contacts_org)
-                wait_page(params, url_contacts_org)
+                set_page(params, url_feedback_form_org)
+                wait_page(params, url_feedback_form_org)
 
                 """Кликаем на 'Я ваш клиент - есть вопрос'"""
                 find_el(params, btn_i_am_your_client_documents_page.xpath)
@@ -233,8 +233,8 @@ def sending_feedback_forms(params):
 
             try:
                 """Переходим на страницу контактов"""
-                set_page(params, url_contacts_org)
-                wait_page(params, url_contacts_org)
+                set_page(params, url_feedback_form_org)
+                wait_page(params, url_feedback_form_org)
 
                 """Кликаем на 'Я ваш клиент - есть вопрос'"""
                 find_el(params, btn_i_am_your_client_documents_page.xpath)

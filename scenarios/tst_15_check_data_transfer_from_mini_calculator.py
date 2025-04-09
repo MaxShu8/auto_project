@@ -1,3 +1,5 @@
+import time
+
 from Business_Actions import *
 from Methods import *
 
@@ -71,6 +73,7 @@ def check_data_transfer_from_mini_calculator(params):
                 click(params)
                 find_el(params, text_placing_an_order.xpath)
                 price_to_load(params)
+                time.sleep(5)
 
                 # Сверяем указанные ранее города
                 check_text_attribute(params, input_dispatch_city.xpath, dispatch_city)
@@ -130,6 +133,7 @@ def check_data_transfer_from_mini_calculator(params):
                 click(params)
                 find_el(params, text_placing_an_order.xpath)
                 price_to_load(params)
+                time.sleep(5)
 
                 # Проверим выбраны ли кнопки "Терминал" -> "Адрес", которые выбрали ранее
                 check_text_attribute(params, btn_dispatch_terminal_check_status.xpath, 'active')
